@@ -1,0 +1,27 @@
+<html>
+  <head>    
+     <script src="https://rss2json.com/gfapi.js"></script>
+    <script>
+      google.load("feeds", "1");
+    function initialize() {
+      var feed = new google.feeds.Feed("https://super-sift.nyc3.cdn.digitaloceanspaces.com/science-xml/All_Science_News.xml");
+      feed.load(function(result) {
+        if (!result.error) {
+          var container = document.getElementById("feed");
+          for (var i = 0; i < result.feed.entries.length; i++) {
+            var entry = result.feed.entries[i];
+            var div = document.createElement("div");
+            div.appendChild(document.createTextNode(entry.title));
+            container.appendChild(div);
+          }
+        }
+      });
+    }
+    google.setOnLoadCallback(initialize);
+    </script>
+  </head>
+  <body>
+    <p><b>Result from the API:</b></p>
+    <div id="feed"></div>
+  </body>
+</html>
