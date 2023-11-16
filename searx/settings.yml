@@ -72,7 +72,7 @@ server:
   bind_address: "127.0.0.1"
   # public URL of the instance, to ensure correct inbound links. Is overwritten
   # by ${SEARXNG_URL}.
-  base_url: false  # "http://example.com/location"
+  base_url: "/supersift/"  # "http://example.com/location"
   limiter: true  # rate limit the number of request on the instance, block some bots
 
   # If your instance owns a /etc/searxng/settings.yml file, then set the following
@@ -329,24 +329,24 @@ engines:
     engine: archlinux
     shortcut: al
 
-  - name: archive is
-    engine: xpath
-    search_url: https://archive.is/search/?q={query}
-    url_xpath: (//div[@class="TEXT-BLOCK"]/a)/@href
-    title_xpath: (//div[@class="TEXT-BLOCK"]/a)
-    content_xpath: //div[@class="TEXT-BLOCK"]/ul/li
-    categories: general
-    timeout: 7.0
-    disabled: true
-    shortcut: ai
-    soft_max_redirects: 1
-    about:
-      website: https://archive.is/
-      wikidata_id: Q13515725
-      official_api_documentation: https://mementoweb.org/depot/native/archiveis/
-      use_official_api: false
-      require_api_key: false
-      results: HTML
+  #- name: archive is
+  #  engine: xpath
+  #  search_url: https://archive.is/search/?q={query}
+  #  url_xpath: (//div[@class="TEXT-BLOCK"]/a)/@href
+  #  title_xpath: (//div[@class="TEXT-BLOCK"]/a)
+  #  content_xpath: //div[@class="TEXT-BLOCK"]/ul/li
+  #  categories: general
+  #  timeout: 7.0
+  #  disabled: true
+  #  shortcut: ai
+  #  soft_max_redirects: 1
+  #  about:
+  #    website: https://archive.is/
+ #     wikidata_id: Q13515725
+ #     official_api_documentation: https://mementoweb.org/depot/native/archiveis/
+ #     use_official_api: false
+  #    require_api_key: false
+  #    results: HTML
 
   - name: artic
     engine: artic
@@ -376,7 +376,7 @@ engines:
   - name: bing
     engine: bing
     shortcut: bi
-    disabled: true
+    disabled: false
 
   - name: bing images
     engine: bing_images
@@ -413,23 +413,23 @@ engines:
     engine: btdigg
     shortcut: bt
 
-  - name: ccc-tv
-    engine: xpath
-    paging: false
-    search_url: https://media.ccc.de/search/?q={query}
-    url_xpath: //div[@class="caption"]/h3/a/@href
-    title_xpath: //div[@class="caption"]/h3/a/text()
-    content_xpath: //div[@class="caption"]/h4/@title
-    categories: videos
-    disabled: true
-    shortcut: c3tv
-    about:
-      website: https://media.ccc.de/
-      wikidata_id: Q80729951
-      official_api_documentation: https://github.com/voc/voctoweb
-      use_official_api: false
-      require_api_key: false
-      results: HTML
+  #- name: ccc-tv
+  #  engine: xpath
+  #  paging: false
+  #  search_url: https://media.ccc.de/search/?q={query}
+  #  url_xpath: //div[@class="caption"]/h3/a/@href
+  #  title_xpath: //div[@class="caption"]/h3/a/text()
+  #  content_xpath: //div[@class="caption"]/h4/@title
+  #  categories: videos
+  #  disabled: true
+  #  shortcut: c3tv
+  #  about:
+  #    website: https://media.ccc.de/
+  #    wikidata_id: Q80729951
+  #    official_api_documentation: https://github.com/voc/voctoweb
+  #    use_official_api: false
+  #    require_api_key: false
+  #    results: HTML
       # We don't set language: de here because media.ccc.de is not just
       # for a German audience. It contains many English videos and many
       # German videos have English subtitles.
@@ -452,58 +452,58 @@ engines:
     timeout: 30
     disabled: true
 
-  - name: crowdview
-    engine: json_engine
-    shortcut: cv
-    categories: general
-    paging: false
-    search_url: https://crowdview-next-js.onrender.com/api/search-v3?query={query}
-    results_query: results
-    url_query: link
-    title_query: title
-    content_query: snippet
-    disabled: true
-    about:
-      website: https://crowdview.ai/
+  #- name: crowdview
+  #  engine: json_engine
+ #   shortcut: cv
+ #   categories: general
+ #   paging: false
+ #   search_url: https://crowdview-next-js.onrender.com/api/search-v3?query={query}
+ #   results_query: results
+ #   url_query: link
+ #   title_query: title
+ #   content_query: snippet
+ #   disabled: true
+ #   about:
+ #     website: https://crowdview.ai/
 
-  - name: yep
-    engine: json_engine
-    shortcut: yep
-    categories: general
-    disabled: true
-    paging: false
-    content_html_to_text: true
-    title_html_to_text: true
-    search_url: https://api.yep.com/fs/1/?type=web&q={query}&no_correct=false&limit=100
-    results_query: 1/results
-    title_query: title
-    url_query: url
-    content_query: snippet
-    about:
-      website: https://yep.com
-      use_official_api: false
-      require_api_key: false
-      results: JSON
+ # - name: yep
+ #   engine: json_engine
+ #   shortcut: yep
+ #   categories: general
+ #   disabled: true
+ #   paging: false
+ #   content_html_to_text: true
+ #   title_html_to_text: true
+ #   search_url: https://api.yep.com/fs/1/?type=web&q={query}&no_correct=false&limit=100
+ #   results_query: 1/results
+ #   title_query: title
+ #   url_query: url
+  #  content_query: snippet
+ ##   about:
+  #    website: https://yep.com
+  #    use_official_api: false
+  #    require_api_key: false
+  #    results: JSON
 
-  - name: curlie
-    engine: xpath
-    shortcut: cl
-    categories: general
-    disabled: true
-    paging: true
-    lang_all: ''
-    search_url: https://curlie.org/search?q={query}&lang={lang}&start={pageno}&stime=92452189
-    page_size: 20
-    results_xpath: //div[@id="site-list-content"]/div[@class="site-item"]
-    url_xpath: ./div[@class="title-and-desc"]/a/@href
-    title_xpath: ./div[@class="title-and-desc"]/a/div
-    content_xpath: ./div[@class="title-and-desc"]/div[@class="site-descr"]
-    about:
-      website: https://curlie.org/
-      wikidata_id: Q60715723
-      use_official_api: false
-      require_api_key: false
-      results: HTML
+#  - name: curlie
+  #  engine: xpath3
+#    shortcut: cl
+#    categories: general
+#    disabled: true
+ #   paging: true
+ #   lang_all: ''
+ #   search_url: https://curlie.org/search?q={query}&lang={lang}&start={pageno}&stime=92452189
+ #   page_size: 20
+ #   results_xpath: //div[@id="site-list-content"]/div[@class="site-item"]
+ #   url_xpath: ./div[@class="title-and-desc"]/a/@href
+  #  title_xpath: ./div[@class="title-and-desc"]/a/div
+ #   content_xpath: ./div[@class="title-and-desc"]/div[@class="site-descr"]
+ #   about:
+ #     website: https://curlie.org/
+ #     wikidata_id: Q60715723
+ #     use_official_api: false
+ #     require_api_key: false
+ #     results: HTML
 
   - name: currency
     engine: currency_convert
@@ -524,7 +524,7 @@ engines:
     engine: duckduckgo_definitions
     shortcut: ddd
     weight: 2
-    disabled: true
+    disabled: false
     tests: *tests_infobox
 
   # cloudflare protected
@@ -539,25 +539,25 @@ engines:
     shortcut: dh
     categories: [it, packages]
 
-  - name: erowid
-    engine: xpath
-    paging: true
-    first_page_num: 0
-    page_size: 30
-    search_url: https://www.erowid.org/search.php?q={query}&s={pageno}
-    url_xpath: //dl[@class="results-list"]/dt[@class="result-title"]/a/@href
-    title_xpath: //dl[@class="results-list"]/dt[@class="result-title"]/a/text()
-    content_xpath: //dl[@class="results-list"]/dd[@class="result-details"]
-    categories: []
-    shortcut: ew
-    disabled: true
-    about:
-      website: https://www.erowid.org/
-      wikidata_id: Q1430691
-      official_api_documentation:
-      use_official_api: false
-      require_api_key: false
-      results: HTML
+ # - name: erowid
+  #  engine: xpath
+ #   paging: true
+ #   first_page_num: 0
+ #   page_size: 30
+ #   search_url: https://www.erowid.org/search.php?q={query}&s={pageno}
+ #   url_xpath: //dl[@class="results-list"]/dt[@class="result-title"]/a/@href
+ #   title_xpath: //dl[@class="results-list"]/dt[@class="result-title"]/a/text()
+ #   content_xpath: //dl[@class="results-list"]/dd[@class="result-details"]
+ #   categories: []
+ #   shortcut: ew
+ #   disabled: true
+ #   about:
+ #     website: https://www.erowid.org/
+ #     wikidata_id: Q1430691
+ #     official_api_documentation:
+ #     use_official_api: false
+ #     require_api_key: false
+ #     results: HTML
 
   # - name: elasticsearch
   #   shortcut: es
@@ -607,11 +607,11 @@ engines:
     shortcut: em
     disabled: true
 
-  - name: tineye
-    engine: tineye
-    shortcut: tin
-    timeout: 9.0
-    disabled: true
+  #- name: tineye
+  #  engine: tineye
+  #  shortcut: tin
+  #  timeout: 9.0
+  #  disabled: true
 
   - name: etymonline
     engine: xpath
@@ -638,11 +638,11 @@ engines:
   #   disabled: true
   #   timeout: 5
 
-  - name: 1x
-    engine: www1x
-    shortcut: 1x
-    timeout: 3.0
-    disabled: true
+ # - name: 1x
+  #  engine: www1x
+ #   shortcut: 1x
+ #   timeout: 3.0
+ #   disabled: true
 
   - name: fdroid
     engine: fdroid
@@ -746,6 +746,7 @@ engines:
   - name: google
     engine: google
     shortcut: go
+    disabled: true
     # additional_tests:
     #   android: *test_android
 
@@ -855,25 +856,25 @@ engines:
     timeout: 6.0
     disabled: true
 
-  - name: ina
-    engine: ina
-    shortcut: in
-    timeout: 6.0
-    disabled: true
+  #- name: ina
+   # engine: ina
+   # shortcut: in
+   # timeout: 6.0
+    #disabled: true
 
-  - name: invidious
-    engine: invidious
+  #- name: invidious
+  #  engine: invidious
     # Instanes will be selected randomly, see https://api.invidious.io/ for
     # instances that are stable (good uptime) and close to you.
-    base_url:
-      - https://invidious.snopyta.org
-      - https://vid.puffyan.us
+  #  base_url:
+  #    - https://invidious.snopyta.org
+  #    - https://vid.puffyan.us
       # - https://invidious.kavin.rocks  # Error 1020 // Access denied by Cloudflare
-      - https://invidio.xamh.de
-      - https://inv.riverside.rocks
-    shortcut: iv
-    timeout: 3.0
-    disabled: true
+  #    - https://invidio.xamh.de
+  #    - https://inv.riverside.rocks
+  #  shortcut: iv
+  #  timeout: 3.0
+  #  disabled: true
 
   #- name: jisho
    # engine: jisho
@@ -916,30 +917,30 @@ engines:
     shortcut: loc
     categories: images
 
-  - name: lingva
-    engine: lingva
-    shortcut: lv
+ # - name: lingva
+ #   engine: lingva
+ #   shortcut: lv
     # set lingva instance in url, by default it will use the official instance
     # url: https://lingva.ml
 
-  - name: lobste.rs
-    engine: xpath
-    search_url: https://lobste.rs/search?utf8=%E2%9C%93&q={query}&what=stories&order=relevance
-    results_xpath: //li[contains(@class, "story")]
-    url_xpath: .//a[@class="u-url"]/@href
-    title_xpath: .//a[@class="u-url"]
-    content_xpath: .//a[@class="domain"]
-    categories: it
-    shortcut: lo
-    timeout: 5.0
-    disabled: true
-    about:
-      website: https://lobste.rs/
-      wikidata_id: Q60762874
-      official_api_documentation:
-      use_official_api: false
-      require_api_key: false
-      results: HTML
+  #- name: lobste.rs
+  #  engine: xpath
+  #  search_url: https://lobste.rs/search?utf8=%E2%9C%93&q={query}&what=stories&order=relevance
+  #  results_xpath: //li[contains(@class, "story")]
+  #  url_xpath: .//a[@class="u-url"]/@href
+  #  title_xpath: .//a[@class="u-url"]
+  #  content_xpath: .//a[@class="domain"]
+  #  categories: it
+  #  shortcut: lo
+  #  timeout: 5.0
+  #  disabled: true
+   # about:
+   #   website: https://lobste.rs/
+   #   wikidata_id: Q60762874
+   #   official_api_documentation:
+   #   use_official_api: false
+   #   require_api_key: false
+   #   results: HTML
 
   - name: azlyrics
     shortcut: lyrics
@@ -960,11 +961,11 @@ engines:
       require_api_key: false
       results: HTML
 
-  - name: metacpan
-    engine: metacpan
-    shortcut: cpan
-    disabled: true
-    number_of_results: 20
+  #- name: metacpan
+  #  engine: metacpan
+  #  shortcut: cpan
+  #  disabled: true
+  #  number_of_results: 20
 
   # - name: meilisearch
   #   engine: meilisearch
@@ -1013,26 +1014,26 @@ engines:
       require_api_key: false
       results: JSON
 
-  - name: nyaa
-    engine: nyaa
-    shortcut: nt
-    disabled: true
+  #- name: nyaa
+  #  engine: nyaa
+  #  shortcut: nt
+  #  disabled: true
 
-  - name: mankier
-    engine: json_engine
-    search_url: https://www.mankier.com/api/v2/mans/?q={query}
-    results_query: results
-    url_query: url
-    title_query: name
-    content_query: description
-    categories: it
-    shortcut: man
-    about:
-      website: https://www.mankier.com/
-      official_api_documentation: https://www.mankier.com/api
-      use_official_api: true
-      require_api_key: false
-      results: JSON
+ # - name: mankier
+ #   engine: json_engine
+ #   search_url: https://www.mankier.com/api/v2/mans/?q={query}
+ #   results_query: results
+ #   url_query: url
+ #   title_query: name
+ #   content_query: description
+ #   categories: it
+ #   shortcut: man
+ #   about:
+ #     website: https://www.mankier.com/
+ #     official_api_documentation: https://www.mankier.com/api
+ #     use_official_api: true
+ #     require_api_key: false
+ #     results: JSON
 
   - name: openairedatasets
     engine: json_engine
@@ -1141,14 +1142,14 @@ engines:
    # timeout: 3.0
 
   # Required dependency: psychopg2
-  #  - name: postgresql
-  #    engine: postgresql
-  #    database: postgres
-  #    username: postgres
-  #    password: postgres
-  #    limit: 10
-  #    query_str: 'SELECT * from my_table WHERE my_column = %(query)s'
-  #    shortcut : psql
+  #- name: govglance
+   # engine: postgresql
+   # database: defaultdb
+   # username: doadmin
+   # password: AVNS_MQHvVxJoS3VOLG8C_rc
+   # limit: 10
+   # query_str: '''SELECT title, details_link, description from legislative.congressional_bills WHERE title like %(query)s OR description like %(query)s '''
+    #shortcut : psql
 
   - name: pub.dev
     engine: xpath
@@ -1282,11 +1283,11 @@ engines:
     api_site: 'stackoverflow'
     categories: [it, q&a]
 
-  - name: askubuntu
-    engine: stackexchange
-    shortcut: ubuntu
-    api_site: 'askubuntu'
-    categories: [it, q&a]
+  #- name: askubuntu
+  #  engine: stackexchange
+  #  shortcut: ubuntu
+  #  api_site: 'askubuntu'
+  #  categories: [it, q&a]
 
   - name: superuser
     engine: stackexchange
@@ -1347,15 +1348,15 @@ engines:
     engine: startpage
     shortcut: sp
     timeout: 6.0
-    disabled: true
+    disabled: 
     additional_tests:
       rosebud: *test_rosebud
 
-  - name: tokyotoshokan
-    engine: tokyotoshokan
-    shortcut: tt
-    timeout: 6.0
-    disabled: true
+  #- name: tokyotoshokan
+  #  engine: tokyotoshokan
+  #  shortcut: tt
+  #  timeout: 6.0
+  #  disabled: true
 
   - name: solidtorrents
     engine: solidtorrents
@@ -1371,20 +1372,1048 @@ engines:
   #   https://liste.mediathekview.de/filmliste-v2.db.bz2
   # and unpack into searx/data/filmliste-v2.db
   # Query to test: "!demo concert"
-  #
-  # - name: demo
-  #   engine: sqlite
-  #   shortcut: demo
-  #   categories: general
-  #   result_template: default.html
-  #   database: searx/data/filmliste-v2.db
-  #   query_str:  >-
-  #     SELECT title || ' (' || time(duration, 'unixepoch') || ')' AS title,
-  #            COALESCE( NULLIF(url_video_hd,''), NULLIF(url_video_sd,''), url_video) AS url,
-  #            description AS content
-  #       FROM film
-  #      WHERE title LIKE :wildcard OR description LIKE :wildcard
-  #      ORDER BY duration DESC
+
+  #- name: supersift
+  #  engine: sqlite
+  #  disabled: False
+  #  categories: general
+  #  result_template: default.html
+  #  database: /usr/local/searxng/searxng-src/searx/data/supersift.db
+  #  query_str:  >-
+      #SELECT title, pubdate, url, description,
+       #   COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+        #  description AS content
+      #FROM legislative
+      #WHERE title LIKE :wildcard OR description LIKE :wildcard
+      #UNION
+      #SELECT title, pubdate, url, description,
+      #    COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+      #    description AS content
+      #FROM executive
+      #WHERE title LIKE :wildcard OR description LIKE :wildcard
+      #UNION
+      #SELECT title, pubdate, url, description,
+      #    COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+      #    description AS content
+      #FROM executive
+      #WHERE title LIKE :wildcard OR description LIKE :wildcard
+      #ORDER BY pubdate DESC
+
+  - name: govglance
+    engine: sqlite
+    disabled: False
+    categories: general
+    result_template: default.html
+    database: /usr/local/searxng/searxng-src/searx/data/govglance.db
+    query_str:  >-
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM executive_presidential_documents
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_congressional_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_congressional_bills_enrolled_ai
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_congressional_bills_enrolled_package
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_congressional_committee_prints_package
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_congressional_documents_package
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_congressional_hearings
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_congressional_hearings_package
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_congressional_reports_package
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM legislative_public_private_laws
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ala
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_alaska
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ariz
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ark
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_cal
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_colo
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_conn
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_del
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_fla
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ga
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_haw
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_idaho
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ill
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ind
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_iowa
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_kan
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ky
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_la
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_mich
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_minn
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_miss
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_mo
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_mont
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_nc
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_nd
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_neb
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_nev
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_nh
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_nj
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_nm
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ohio
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_okla
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_or
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_pa
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_ri
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_sc
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_sd
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_tenn
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_tex
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_utah
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_va
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_vt
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_wash
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_wis
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_wva
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_judicial_supreme_wyo
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_alabama
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_alaska
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_american_samoa
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_arkansas
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_california
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_colorado
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_connecticut
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_delaware
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_district_of_columbia
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_florida
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_georgia
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_guam
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_hawaii
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_idaho
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_illinois
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_indiana
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_iowa
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_kansas
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_kentucky
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_lousiana
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_maine
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_maryland
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_masschusetts
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_michigan
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_minnesota
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_mississippi
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_missouri
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_montona
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_nebraska
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_nevada
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_new_hampshire
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_new_jersery
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_new_york
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_north_carolina
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_north_dakota
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_northern_mariana_islands
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_ohio
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_oklahoma
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_oregon
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_pennsylvania
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_puerto_rico
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_republic_of_palau
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_republic_of_the_marshall_islands
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_rhode_island
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_south_carolina
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_south_dakota
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_tennessee
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_texas
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_us_virgin_islands
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_utah
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_vermont
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_virginia
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_washington
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_west_virginia
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_wisconsin
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM state_newsroom_wyoming
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ak_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_al_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ar_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_as_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_az_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ca_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_co_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ct_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_dc_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_de_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_fl_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ga_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_gu_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_hi_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ia_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_id_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_il_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_in_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ks_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ky_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_la_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ma_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_md_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_me_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_mi_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_mn_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_mo_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_mp_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ms_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_mt_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_nc_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_nd_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ne_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_nh_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_nj_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_nm_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_nv_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ny_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_oh_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ok_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_or_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_pa_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_pr_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ri_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_sc_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_sd_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_tn_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_tx_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_ut_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_va_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_vi_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_vt_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_wa_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_wi_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_wv_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        UNION
+        SELECT title, pubdate, url, description, title, pubdate, url, description,
+            COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
+            description AS content 
+        FROM states_wy_bills
+        WHERE title LIKE :wildcard OR description LIKE :wildcard
+        ORDER BY pubdate DESC
 
   # Requires Tor
   - name: torch
@@ -1443,10 +2472,10 @@ engines:
     engine: unsplash
     shortcut: us
 
-  - name: yahoo
-    engine: yahoo
-    shortcut: yh
-    disabled: true
+  #- name: yahoo
+  #  engine: yahoo
+  #  shortcut: yh
+  #  disabled: true
 
   - name: yahoo news
     engine: yahoo_news
@@ -1471,18 +2500,18 @@ engines:
     engine: vimeo
     shortcut: vm
 
-  - name: wiby
-    engine: json_engine
-    paging: true
-    search_url: https://wiby.me/json/?q={query}&p={pageno}
-    url_query: URL
-    title_query: Title
-    content_query: Snippet
-    categories: [general, web]
-    shortcut: wib
-    disabled: true
-    about:
-      website: https://wiby.me/
+  #- name: wiby
+  #  engine: json_engine
+  #  paging: true
+  #  search_url: https://wiby.me/json/?q={query}&p={pageno}
+  #  url_query: URL
+  #  title_query: Title
+  #  content_query: Snippet
+  #  categories: [general, web]
+  #  shortcut: wib
+  #  disabled: true
+  #  about:
+  #    website: https://wiby.me/
 
   - name: alexandria
     engine: json_engine
@@ -1495,7 +2524,7 @@ engines:
     url_query: url
     content_query: snippet
     timeout: 1.5
-    disabled: true
+    disabled: false
     about:
       website: https://alexandria.org/
       official_api_documentation: https://github.com/alexandria-org/alexandria-api/raw/master/README.md
@@ -1534,7 +2563,7 @@ engines:
     base_url: "https://{language}.wikiquote.org/"
     number_of_results: 5
     search_type: text
-    disabled: true
+    disabled: false
     additional_tests:
       rosebud: *test_rosebud
     about:
@@ -1548,7 +2577,7 @@ engines:
     base_url: "https://{language}.wikisource.org/"
     number_of_results: 5
     search_type: text
-    disabled: true
+    disabled: false
     about:
       website: https://www.wikisource.org/
       wikidata_id: Q263
@@ -1571,7 +2600,7 @@ engines:
     base_url: "https://{language}.wikiversity.org/"
     number_of_results: 5
     search_type: text
-    disabled: true
+    disabled: false
     about:
       website: https://www.wikiversity.org/
       wikidata_id: Q370
@@ -1583,7 +2612,7 @@ engines:
     base_url: "https://{language}.wikivoyage.org/"
     number_of_results: 5
     search_type: text
-    disabled: true
+    disabled: false
     about:
       website: https://www.wikivoyage.org/
       wikidata_id: Q373
@@ -1601,9 +2630,9 @@ engines:
     timeout: 6.0
     categories: []
 
-  - name: dictzone
-    engine: dictzone
-    shortcut: dc
+  #- name: dictzone
+  #  engine: dictzone
+  #  shortcut: dc
 
   - name: mymemory translated
     engine: translated
@@ -1623,20 +2652,20 @@ engines:
   #    query_str: 'SELECT * from mytable WHERE fieldname=%(query)s'
   #    shortcut: mysql
 
-  - name: 1337x
-    engine: 1337x
-    shortcut: 1337x
-    disabled: true
+  #- name: 1337x
+  #  engine: 1337x
+  #  shortcut: 1337x
+  #  disabled: true
 
   - name: duden
     engine: duden
     shortcut: du
     disabled: true
 
-  - name: seznam
-    shortcut: szn
-    engine: seznam
-    disabled: true
+  #- name: seznam
+  #  shortcut: szn
+  #  engine: seznam
+  #  disabled: true
 
   # - name: deepl
   #   engine: deepl
@@ -1647,48 +2676,48 @@ engines:
   #   timeout: 5.0
   #   disabled: true
 
-  - name: mojeek
-    shortcut: mjk
-    engine: xpath
-    paging: true
-    categories: [general, web]
-    search_url: https://www.mojeek.com/search?q={query}&s={pageno}&lang={lang}&lb={lang}
-    results_xpath: //ul[@class="results-standard"]/li/a[@class="ob"]
-    url_xpath: ./@href
-    title_xpath: ../h2/a
-    content_xpath: ..//p[@class="s"]
-    suggestion_xpath: //div[@class="top-info"]/p[@class="top-info spell"]/em/a
-    first_page_num: 0
-    page_size: 10
-    disabled: true
-    about:
-      website: https://www.mojeek.com/
-      wikidata_id: Q60747299
-      official_api_documentation: https://www.mojeek.com/services/api.html/
-      use_official_api: false
-      require_api_key: false
-      results: HTML
+  #- name: mojeek
+  #  shortcut: mjk
+  #  engine: xpath
+  #  paging: true
+  #  categories: [general, web]
+  #  search_url: https://www.mojeek.com/search?q={query}&s={pageno}&lang={lang}&lb={lang}
+  #  results_xpath: //ul[@class="results-standard"]/li/a[@class="ob"]
+  #  url_xpath: ./@href
+  #  title_xpath: ../h2/a
+  #  content_xpath: ..//p[@class="s"]
+  #  suggestion_xpath: //div[@class="top-info"]/p[@class="top-info spell"]/em/a
+  #  first_page_num: 0
+  #  page_size: 10
+  #  disabled: true
+  #  about:
+  #    website: https://www.mojeek.com/
+  #    wikidata_id: Q60747299
+  #    official_api_documentation: https://www.mojeek.com/services/api.html/
+  #    use_official_api: false
+  #    require_api_key: false
+  #    results: HTML
 
-  - name: naver
-    shortcut: nvr
-    categories: [general, web]
-    engine: xpath
-    paging: true
-    search_url: https://search.naver.com/search.naver?where=webkr&sm=osp_hty&ie=UTF-8&query={query}&start={pageno}
-    url_xpath: //a[@class="link_tit"]/@href
-    title_xpath: //a[@class="link_tit"]
-    content_xpath: //a[@class="total_dsc"]/div
-    first_page_num: 1
-    page_size: 10
-    disabled: true
-    about:
-      website: https://www.naver.com/
-      wikidata_id: Q485639
-      official_api_documentation: https://developers.naver.com/docs/nmt/examples/
-      use_official_api: false
-      require_api_key: false
-      results: HTML
-      language: ko
+ # - name: naver
+ #   shortcut: nvr
+ #   categories: [general, web]
+ #   engine: xpath
+ #   paging: true
+ #   search_url: https://search.naver.com/search.naver?where=webkr&sm=osp_hty&ie=UTF-8&query={query}&start={pageno}
+ #   url_xpath: //a[@class="link_tit"]/@href
+ #   title_xpath: //a[@class="link_tit"]
+ #   content_xpath: //a[@class="total_dsc"]/div
+ #   first_page_num: 1
+ #   page_size: 10
+ #   disabled: true
+ #   about:
+ #     website: https://www.naver.com/
+ #     wikidata_id: Q485639
+ #     official_api_documentation: https://developers.naver.com/docs/nmt/examples/
+ #     use_official_api: false
+ #     require_api_key: false
+ #     results: HTML
+ #     language: ko
 
   - name: rubygems
     shortcut: rbg
@@ -1711,20 +2740,20 @@ engines:
       require_api_key: false
       results: HTML
 
-  - name: peertube
-    engine: peertube
-    shortcut: ptb
-    paging: true
+  #- name: peertube
+  #  engine: peertube
+  #  shortcut: ptb
+  #  paging: true
     # alternatives see: https://instances.joinpeertube.org/instances
     # base_url: https://tube.4aem.com
-    categories: videos
-    disabled: true
-    timeout: 6.0
+  #  categories: videos
+  #  disabled: true
+  #  timeout: 6.0
 
-  - name: mediathekviewweb
-    engine: mediathekviewweb
-    shortcut: mvw
-    disabled: true
+  #- name: mediathekviewweb
+   # engine: mediathekviewweb
+   # shortcut: mvw
+   # disabled: true
 
   # - name: yacy
   #   engine: yacy
@@ -1787,7 +2816,7 @@ engines:
     title_xpath: //li//div[@class="mw-search-result-heading"]/a
     content_xpath: //li/div[@class="searchresult"]
     categories: general
-    disabled: true
+    disabled: false
     about:
       website: https://wikimini.org/
       wikidata_id: Q3568032
@@ -1829,32 +2858,32 @@ engines:
       require_api_key: false
       results: HTML
 
-  - name: petalsearch
-    shortcut: pts
-    engine: xpath
-    paging: true
-    search_url: https://petalsearch.com/search?query={query}&pn={pageno}
-    url_xpath: //div[@class='card-source']
-    title_xpath: //div[@class='title-name']
-    content_xpath: //div[@class='webpage-text']
-    first_page_num: 1
-    disabled: true
-    headers:
-      User-Agent: Mozilla/5.0 (Linux; Android 7.0;) \
-        AppleWebKit/537.36 (KHTML, like Gecko) \
-        Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
-    about:
-      website: https://petalsearch.com/
-      wikidata_id: Q104399280
-      use_official_api: false
-      require_api_key: false
-      results: HTML
+  #- name: petalsearch
+  #  shortcut: pts
+  #  engine: xpath
+  #  paging: true
+  #  search_url: https://petalsearch.com/search?query={query}&pn={pageno}
+  #  url_xpath: //div[@class='card-source']
+  #  title_xpath: //div[@class='title-name']
+  #  content_xpath: //div[@class='webpage-text']
+  #  first_page_num: 1
+  #  disabled: true
+  #  headers:
+  #    User-Agent: Mozilla/5.0 (Linux; Android 7.0;) \
+  #      AppleWebKit/537.36 (KHTML, like Gecko) \
+  #      Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+  #  about:
+  #    website: https://petalsearch.com/
+  #    wikidata_id: Q104399280
+  #    use_official_api: false
+  #    require_api_key: false
+  #    results: HTML
 
-  - name: petalsearch images
-    engine: petal_images
-    shortcut: ptsi
-    disabled: true
-    timeout: 3.0
+  #- name: petalsearch images
+  #  engine: petal_images
+  #  shortcut: ptsi
+  #  disabled: true
+  #  timeout: 3.0
 
   - name: lib.rs
     shortcut: lrs
@@ -1893,25 +2922,25 @@ engines:
       require_api_key: false
       results: HTML
 
-  - name: goo
-    shortcut: goo
-    engine: xpath
-    paging: true
-    search_url: https://search.goo.ne.jp/web.jsp?MT={query}&FR={pageno}0
-    url_xpath: //div[@class="result"]/p[@class='title fsL1']/a/@href
-    title_xpath: //div[@class="result"]/p[@class='title fsL1']/a
-    content_xpath: //p[contains(@class,'url fsM')]/following-sibling::p
-    first_page_num: 0
-    categories: [general, web]
-    disabled: true
-    timeout: 4.0
-    about:
-      website: https://search.goo.ne.jp
-      wikidata_id: Q249044
-      use_official_api: false
-      require_api_key: false
-      results: HTML
-      language: ja
+  #- name: goo
+  #  shortcut: goo
+  #  engine: xpath
+  #  paging: true
+  #  search_url: https://search.goo.ne.jp/web.jsp?MT={query}&FR={pageno}0
+  #  url_xpath: //div[@class="result"]/p[@class='title fsL1']/a/@href
+  #  title_xpath: //div[@class="result"]/p[@class='title fsL1']/a
+  #  content_xpath: //p[contains(@class,'url fsM')]/following-sibling::p
+  #  first_page_num: 0
+  #  categories: [general, web]
+  #  disabled: true
+  #  timeout: 4.0
+  #  about:
+  #    website: https://search.goo.ne.jp
+  #    wikidata_id: Q249044
+  #    use_official_api: false
+  #    require_api_key: false
+  #    results: HTML
+  #    language: ja
 
 # Doku engine lets you access to any Doku wiki instance:
 # A public one or a privete/corporate one.

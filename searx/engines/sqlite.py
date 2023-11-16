@@ -70,6 +70,7 @@ def sqlite_cursor():
 
     """
     uri = 'file:' + database + '?mode=ro'
+    print(uri)
     with contextlib.closing(sqlite3.connect(uri, uri=True)) as connect:
         connect.row_factory = sqlite3.Row
         with contextlib.closing(connect.cursor()) as cursor:

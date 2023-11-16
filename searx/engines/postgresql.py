@@ -29,9 +29,9 @@ except ImportError:
     # manually to use the engine.
     pass
 
-engine_type = 'offline'
-host = "127.0.0.1"
-port = "5432"
+engine_type = 'online'
+host = "db-postgresql-nyc1-03135-do-user-9254433-0.b.db.ondigitalocean.com"
+port = "25060"
 database = ""
 username = ""
 password = ""
@@ -63,7 +63,7 @@ def init(engine_settings):
 def search(query, params):
     query_params = {'query': query}
     query_to_run = query_str + ' LIMIT {0} OFFSET {1}'.format(limit, (params['pageno'] - 1) * limit)
-
+    print(_connection)
     with _connection:
         with _connection.cursor() as cur:
             cur.execute(query_to_run, query_params)

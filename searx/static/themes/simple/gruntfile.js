@@ -147,6 +147,7 @@ module.exports = function (grunt) {
         files: {
           '<%= _templates %>/simple/searxng-wordmark.min.svg': '<%= _brand %>/searxng-wordmark.svg',
           'img/searxng.svg': '<%= _brand %>/searxng.svg',
+	  'img/supersiftBackground.jpg': '<%= _brand %>/supersiftBackground.jpg',
           'img/img_load_error.svg': '<%= _brand %>/img_load_error.svg'
         }
       },
