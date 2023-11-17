@@ -26,4 +26,4 @@ searx/version_frozen.py
 
 searx/data/*.db
 .bash_profile
-searxng-src/searx/settings.yml
+

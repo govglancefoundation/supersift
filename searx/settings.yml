@@ -1143,10 +1143,10 @@ engines:
 
   # Required dependency: psychopg2
   #- name: govglance
-   # engine: postgresql
-   # database: defaultdb
-   # username: doadmin
-   # password: AVNS_MQHvVxJoS3VOLG8C_rc
+   # engine: 
+   # database: 
+   # username: 
+   # password: <%= ENV['DATABASE_PASSWORD'] %>
    # limit: 10
    # query_str: '''SELECT title, details_link, description from legislative.congressional_bills WHERE title like %(query)s OR description like %(query)s '''
     #shortcut : psql
