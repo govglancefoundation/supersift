@@ -30,9 +30,10 @@
   {% endblock %}
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" sizes="any">
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
-
+  <script defer data-domain="supersift.net" src="https://plausible.io/js/script.js"></script>
 </head>
-<body background="{{ url_for('static', filename='img/supersiftBackground.jpg') }}" class="{{ endpoint }}_endpoint" >
+<body background="{{ url_for('static', filename='img/supersiftBackground.png') }}" class="{{ endpoint }}_endpoint" >
+
 <main id="main_{{  self._TemplateReference__context.name|replace("simple/", "")|replace(".html", "") }}" class="{{body_class}}">
     {% if errors %}
         <div class="dialog-error" role="alert">
@@ -44,7 +45,9 @@
             </ul>
         </div>
     {% endif %}
-
+    <nav id="nav_bar">
+        <h2>Super Sift: Better, Private, Non-profit Search</h2>
+    </nav>
     <nav id="links_on_top">
       {%- from 'simple/icons.html' import icon_big -%}
 	<a href="https://testflight.apple.com/join/opyxawEM" class="link_on_top_donate">{{ icon_big('people-outline') }}<span>{{ _('iOS Beta') }}</span></a>

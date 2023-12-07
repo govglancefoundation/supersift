@@ -2479,7 +2479,7 @@ table.engine-error th.engine-error-type {
 }
 
 .index .title {
-    background: url(../img/searxng.png) no-repeat;
+    /*background: url(../img/searxng.png) no-repeat;*/
     min-height: 4rem;
     margin: 4rem auto;
     background-position: center;
@@ -3300,6 +3300,14 @@ article[data-vim-selected].category-videos {
     margin: .125rem 0;
     padding: 1rem;
     border-right: .2rem solid transparent
+    background: rgba(0, 0, 0, 0.5); /* White color with 20% opacity */
+    border-radius: 20px; /* Rounded borders */
+    /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    backdrop-filter: blur(50px); /* Blurred background */
+    -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
+    padding: 20px; /* Space inside the div */
+    border: 0px solid rgba(255, 255, 255, 0.3);
+    border-left: .2rem solid transparent
 }
 
 .result h3 {
@@ -3771,6 +3779,14 @@ summary.title {
     grid-area: sidebar;
     word-wrap: break-word;
     color: var(--color-sidebar-font)
+    background: rgba(0, 0, 0, 0.5); /* White color with 20% opacity */
+    border-radius: 20px; /* Rounded borders */
+    /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    backdrop-filter: blur(50px); /* Blurred background */
+    -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
+    padding: 20px; /* Space inside the div */
+    border: 0px solid rgba(255, 255, 255, 0.3);
+    border-left: .2rem solid transparent
 }
 
 #sidebar .infobox {
@@ -4205,6 +4221,13 @@ summary.title {
     .result {
         background: var(--color-result-background);
         margin: 1rem 0
+	background: rgba(255, 255, 255, 0.2); /* White color with 20% opacity */
+        border-radius: 15px; /* Rounded borders */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        backdrop-filter: blur(10px); /* Blurred background */
+        -webkit-backdrop-filter: blur(10px); /* For Safari browser compatibility */
+        padding: 20px; /* Space inside the div */
+        border: 1px solid rgba(255, 255, 255, 0.3);    
     }
 
     .result-images {

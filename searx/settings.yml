@@ -7,7 +7,7 @@ general:
   privacypolicy_url: false
   # use true to use your own donation page written in searx/info/en/donate.md
   # use false to disable the donation link
-  donation_url: https://checkout.stripe.com/c/pay/cs_live_a1Dh0hOAqEXlLljmhgwygQiNBkdl1rVshvnLwghNT8xQo7DwRU4weeQTXg#fidkdWxOYHwnPyd1blppbHNgWjA0SWxfTnJPbko9Nk1rbE52MUtgS2NMc0Q3VnQxMXw8fzQ1ZDNfPHR8dlN1ZzJ3dWwxT3FVfEZSf0ZialRRU2Nnc39SdTBnfVV0QGkwa3dMYF1xaW5yUUhfNTVOc0s3N21uSScpJ3VpbGtuQH11anZgYUxhJz8nNz1qNmNdZ2FzZ1RKN1dKNz09Jyknd2BjYHd3YHdKd2xibGsnPydtcXF1dj8qKmJqc2JpZGtmYCtqd2IqJ3gl
+  donation_url: https://donate.stripe.com/14k17PepHaMK1NKfYZ
   # mailto:contact@example.com
   contact_url: false
   # record stats
