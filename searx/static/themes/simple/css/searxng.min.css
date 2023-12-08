@@ -4,6 +4,7 @@
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
+    overscroll-behavior: none;
 }
 
 body {
@@ -11,11 +12,12 @@ body {
     background-size: cover; /* Cover the entire viewport */
     background-repeat: repeat;
     font-family: 'Roboto', Arial, sans-serif;
-
+    overscroll-behavior: none;
 }
 
 main {
     display: block;
+    overscroll-behavior: none;
 }
 
 
@@ -324,7 +326,7 @@ template {
         --color-autocomplete-background: rgba(0, 0, 0, 0.8);
         --color-autocomplete-background-hover: #1e1e22;
         --color-answer-font: #bbb;
-        --color-answer-background: rgba(0, 0, 0, 0.5);
+        --color-answer-background: rgba(0, 0, 0, 0.8);
         --color-result-border: #333;
         --color-result-url-font: #fff;
         --color-result-vim-selected: #1f1f23cc;
@@ -421,7 +423,7 @@ template {
     --color-autocomplete-background: rgba(0, 0, 0, 0.5);
     --color-autocomplete-background-hover: #1e1e22;
     --color-answer-font: #bbb;
-    --color-answer-background: rgba(0, 0, 0, 0.5);
+    --color-answer-background: rgba(0, 0, 0, 0.8);
     --color-result-border: #333;
     --color-result-url-font: #fff;
     --color-result-vim-selected: #1f1f23cc;
@@ -2819,7 +2821,8 @@ table.engine-error th.engine-error-type {
 
 .search_box {
     /*border-radius: .8rem;*/
-    width: 44rem;
+    /*width: 44rem;*/
+    width: 90%;
     display: inline-flex;
     flex-direction: row;
     white-space: nowrap;
@@ -3823,7 +3826,7 @@ summary.title {
 
 #sidebar .infobox {
     margin: 10px 0 10px;
-    border: 1px solid var(--color-sidebar-border);
+    border: 0px solid var(--color-sidebar-border);
     padding: 1rem;
     font-size: .9em;
     border-radius: 10px
