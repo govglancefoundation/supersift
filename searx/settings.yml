@@ -904,7 +904,7 @@ engines:
     disabled: False
     result_template: default.html
     database: /usr/local/searxng/searxng-src/searx/data/govglance.db
-    categories: [general, government]
+    categories: [government]
     query_str:  >-
         SELECT title, pubdate, url, description, title, pubdate, url, description,
             COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
