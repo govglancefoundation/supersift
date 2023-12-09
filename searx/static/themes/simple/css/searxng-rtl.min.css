@@ -2,30 +2,16 @@
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
-    background-image: url("https://cdn.glitch.global/59f90050-9cae-4480-94ae-4ac7bd02e42c/supersiftBackground.jpg?v=1699909888685");
-    background-size: cover; /* Cover the entire viewport */
-    background-repeat: no-repeat; /* Do not repeat the image *//* Center the image */
 }
 
 body {
     margin: 0;
-    background-image: url("https://cdn.glitch.global/59f90050-9cae-4480-94ae-4ac7bd02e42c/supersiftBackground.jpg?v=1699909888685");
-    background-size: cover; /* Cover the entire viewport */
-    background-repeat: no-repeat; /* Do not repeat the image *//* Center the image */
 }
 
 main {
     display: block;
-    background-image: url("https://cdn.glitch.global/59f90050-9cae-4480-94ae-4ac7bd02e42c/supersiftBackground.jpg?v=1699909888685");
-    background-size: cover; /* Cover the entire viewport */
-    background-repeat: no-repeat; /* Do not repeat the image *//* Center the image */
 }
 
-.app {
-    background-image: url("https://cdn.glitch.global/59f90050-9cae-4480-94ae-4ac7bd02e42c/supersiftBackground.jpg?v=1699909888685");
-    background-size: cover; /* Cover the entire viewport */
-    background-repeat: no-repeat; /* Do not repeat the image *//* Center the image */
-}
 h1 {
     font-size: 2em;
     margin: .67em 0
@@ -233,7 +219,7 @@ template {
     --color-autocomplete-background: #fff;
     --color-autocomplete-background-hover: #e3e3e3;
     --color-answer-font: #444;
-    --color-answer-background: #fff;
+    --color-answer-background: rgba(255, 255, 255, 0.5);
     --color-result-background: #fff;
     --color-result-border: #ddd;
     --color-result-url-font: #000;
@@ -330,7 +316,7 @@ template {
         --color-autocomplete-background: #2b2e36;
         --color-autocomplete-background-hover: #1e1e22;
         --color-answer-font: #bbb;
-        --color-answer-background: #26292f;
+        --color-answer-background: rgba(0, 0, 0, 0.5);
         --color-result-background: #26292f;
         --color-result-border: #333;
         --color-result-url-font: #fff;
@@ -427,7 +413,7 @@ template {
     --color-autocomplete-background: #2b2e36;
     --color-autocomplete-background-hover: #1e1e22;
     --color-answer-font: #bbb;
-    --color-answer-background: #26292f;
+    --color-answer-background: rgba(0, 0, 0, 0.5);
     --color-result-background: #26292f;
     --color-result-border: #333;
     --color-result-url-font: #fff;

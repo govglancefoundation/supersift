@@ -9,17 +9,25 @@ html {
 
 body {
     margin: 0;
-    background-size: cover; /* Cover the entire viewport */
-    background-repeat: repeat;
-    font-family: 'Roboto', Arial, sans-serif;
     overscroll-behavior: none;
+   /* overflow-x: hidden;
+    overflow-y: scroll;*/
+
 }
 
 main {
-    display: block;
+    /*display: block;*/
     overscroll-behavior: none;
+    background: linear-gradient( #039573, #04654F);
 }
 
+.title {
+    color: var(--color-base-title);
+}
+
+.spacer {
+    width: 10em;
+}
 
 h1 {
     font-size: 2em;
@@ -190,27 +198,28 @@ template {
 
 :root {
     --color-glass-background: rgba(255, 255, 255, 0.5);
-    --color-base-font: #444;
+    --color-base-title: rgba(255, 255, 255, 0.7); 
+    --color-base-font: #212121;
     --color-base-font-rgb: 68, 68, 68;
-    --color-base-background: #fff;
-    --color-base-background-mobile: #f2f5f8;
-    --color-url-font: #334999;
-    --color-url-visited-font: #9822c3;
+    --color-base-background: #039573;
+    --color-base-background-mobile: #039573;
+    --color-url-font: #039573;
+    --color-url-visited-font: #039573;
     --color-header-background: #fdfbff;
-    --color-header-border: #ddd;
+    --color-header-border: #fdfbff;
     --color-footer-background: #fdfbff;
-    --color-footer-border: #ddd;
-    --color-sidebar-border: #ddd;
+    --color-footer-border: #fdfbff;
+    --color-sidebar-border: #fdfbff;
     --color-sidebar-font: #000;
-    --color-sidebar-background: #fff;
+    --color-sidebar-background: rgba(255, 255, 255, 0.5);
     --color-backtotop-font: #444;
-    --color-backtotop-border: #ddd;
+    --color-backtotop-border: #fdfbff;
     --color-backtotop-background: #fff;
     --color-btn-background: #039573;
     --color-btn-font: #fff;
-    --color-show-btn-background: #bbb;
+    --color-show-btn-background: ##fdfbff;
     --color-show-btn-font: #000;
-    --color-search-border: #bbb;
+    --color-search-border: #fdfbff;
     --color-search-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
     --color-search-background: #fff;
     --color-search-font: #222;
@@ -224,13 +233,13 @@ template {
     --color-categories-item-selected-font: #039573;
     --color-categories-item-border-selected: #039573;
     --color-autocomplete-font: #000;
-    --color-autocomplete-border: #bbb;
+    --color-autocomplete-border: #fdfbff;
     --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
     --color-autocomplete-background: rgba(255, 255, 255, 0.5);
     --color-autocomplete-background-hover: #e3e3e3;
     --color-answer-font: #444;
     --color-answer-background: rgba(255, 255, 255, 0.5);
-    --color-result-border: #ddd;
+    --color-result-border: #fdfbff;
     --color-result-url-font: #000;
     --color-result-vim-selected: #f7f7f7;
     --color-result-vim-arrow: #039573;
@@ -240,7 +249,7 @@ template {
     --color-result-link-visited-font: #007157;
     --color-result-publishdate-font: #777;
     --color-result-engines-font: #545454;
-    --color-result-search-url-border: #ddd;
+    --color-result-search-url-border: #fdfbff;
     --color-result-search-url-font: #000;
     --color-result-image-span-font: #444;
     --color-result-image-span-font-selected: #fff;
@@ -259,24 +268,24 @@ template {
     --color-toolkit-badge-background: #545454;
     --color-toolkit-kbd-font: #fff;
     --color-toolkit-kbd-background: #000;
-    --color-toolkit-dialog-border: #ddd;
+    --color-toolkit-dialog-border: #fdfbff;
     --color-toolkit-dialog-background: #fff;
     --color-toolkit-tabs-label-border: #fff;
-    --color-toolkit-tabs-section-border: #ddd;
+    --color-toolkit-tabs-section-border: #fdfbff;
     --color-toolkit-select-background: #e1e1e1;
-    --color-toolkit-select-border: #ddd;
-    --color-toolkit-select-background-hover: #bbb;
+    --color-toolkit-select-border: #fdfbff;
+    --color-toolkit-select-background-hover: ##fdfbff;
     --color-toolkit-input-text-font: #222;
-    --color-toolkit-checkbox-onoff-off-background: #ddd;
-    --color-toolkit-checkbox-onoff-on-background: #ddd;
+    --color-toolkit-checkbox-onoff-off-background: #fdfbff;
+    --color-toolkit-checkbox-onoff-on-background: #fdfbff;
     --color-toolkit-checkbox-onoff-on-mark-background: #039573;
     --color-toolkit-checkbox-onoff-on-mark-color: #fff;
     --color-toolkit-checkbox-onoff-off-mark-background: #aaa;
     --color-toolkit-checkbox-onoff-off-mark-color: #fff;
-    --color-toolkit-checkbox-label-background: #ddd;
-    --color-toolkit-checkbox-label-border: #ddd;
+    --color-toolkit-checkbox-label-background: #fdfbff;
+    --color-toolkit-checkbox-label-border: #fdfbff;
     --color-toolkit-checkbox-input-border: #039573;
-    --color-toolkit-engine-tooltip-border: #ddd;
+    --color-toolkit-engine-tooltip-border: #fdfbff;
     --color-toolkit-engine-tooltip-background: #fff;
     --color-toolkit-loader-border: rgba(0, 0, 0, 0.2);
     --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
@@ -287,20 +296,21 @@ template {
 @media (prefers-color-scheme:dark) {
     :root.theme-auto {
         --color-glass-background: rgba(0, 0, 0, 0.8);
-        --color-base-font: #bbb;
+        --color-base-title: rgba(255, 255, 255, 0.7); 
+        --color-base-font: #fdfbff;
         --color-base-font-rgb: 187, 187, 187;
-        --color-base-background: #222428;
-        --color-base-background-mobile: #222428;
+        --color-base-background: #039573;  
+        --color-base-background-mobile: #039573;  
         --color-url-font: #039573;
-        --color-url-visited-font: #007157;
+        --color-url-visited-font: #039573;
         --color-header-background: #1e1e22;
         --color-header-border: #333;
         --color-footer-background: #1e1e22;
         --color-footer-border: #333;
         --color-sidebar-border: #555;
         --color-sidebar-font: #fff;
-        --color-sidebar-background: #292c34;
-        --color-backtotop-font: #bbb;
+        --color-sidebar-background: rgba(0, 0, 0, 0.8);
+        --color-backtotop-font: #fdfbff;
         --color-backtotop-border: #333;
         --color-backtotop-background: #2b2e36;
         --color-btn-background: #039573;
@@ -325,7 +335,7 @@ template {
         --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
         --color-autocomplete-background: rgba(0, 0, 0, 0.8);
         --color-autocomplete-background-hover: #1e1e22;
-        --color-answer-font: #bbb;
+        --color-answer-font: #fdfbff;
         --color-answer-background: rgba(0, 0, 0, 0.8);
         --color-result-border: #333;
         --color-result-url-font: #fff;
@@ -346,7 +356,7 @@ template {
         --color-result-detail-link: #039573;
         --color-result-detail-loader-border: rgba(255, 255, 255, 0.2);
         --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
-        --color-result-image-span-font: #bbb;
+        --color-result-image-span-font: #fdfbff;
         --color-result-image-span-font-selected: #222;
         --color-result-image-background: #222;
         --color-settings-tr-hover: #2c2c32;
@@ -368,7 +378,7 @@ template {
         --color-toolkit-checkbox-onoff-on-background: #313338;
         --color-toolkit-checkbox-onoff-on-mark-background: #039573;
         --color-toolkit-checkbox-onoff-on-mark-color: #222;
-        --color-toolkit-checkbox-onoff-off-mark-background: #ddd;
+        --color-toolkit-checkbox-onoff-off-mark-background: #fdfbff;
         --color-toolkit-checkbox-onoff-off-mark-color: #222;
         --color-toolkit-checkbox-label-background: #222;
         --color-toolkit-checkbox-label-border: #333;
@@ -377,27 +387,28 @@ template {
         --color-toolkit-engine-tooltip-background: #222;
         --color-toolkit-loader-border: rgba(255, 255, 255, 0.2);
         --color-toolkit-loader-borderleft: rgba(0, 0, 0, 0);
-        --color-doc-code: #ddd;
+        --color-doc-code: #fdfbff;
         --color-doc-code-background: #4d5a6f
     }
 }
 
 :root.theme-dark {
     --color-glass-background: rgba(0, 0, 0, 0.8);
-    --color-base-font: #bbb;
+    --color-base-title: rgba(255, 255, 255, 0.7); 
+    --color-base-font: #fdfbff;
     --color-base-font-rgb: 187, 187, 187;
-    --color-base-background: #222428;
-    --color-base-background-mobile: #222428;
+    --color-base-background: #039573;  
+    --color-base-background-mobile: #039573;
     --color-url-font: #039573;
-    --color-url-visited-font: #c09cd9;
+    --color-url-visited-font: #039573;
     --color-header-background: #1e1e22;
     --color-header-border: #333;
     --color-footer-background: #1e1e22;
     --color-footer-border: #333;
     --color-sidebar-border: #555;
     --color-sidebar-font: #fff;
-    --color-sidebar-background: #292c34;
-    --color-backtotop-font: #bbb;
+    --color-sidebar-background: rgba(0, 0, 0, 0.8);
+    --color-backtotop-font: #fdfbff;
     --color-backtotop-border: #333;
     --color-backtotop-background: #2b2e36;
     --color-btn-background: #039573;
@@ -422,7 +433,7 @@ template {
     --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
     --color-autocomplete-background: rgba(0, 0, 0, 0.5);
     --color-autocomplete-background-hover: #1e1e22;
-    --color-answer-font: #bbb;
+    --color-answer-font: #fdfbff;
     --color-answer-background: rgba(0, 0, 0, 0.8);
     --color-result-border: #333;
     --color-result-url-font: #fff;
@@ -443,7 +454,7 @@ template {
     --color-result-detail-link: #039573;
     --color-result-detail-loader-border: rgba(255, 255, 255, 0.2);
     --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
-    --color-result-image-span-font: #bbb;
+    --color-result-image-span-font: #fdfbff;
     --color-result-image-span-font-selected: #222;
     --color-result-image-background: #222;
     --color-settings-tr-hover: #2c2c32;
@@ -465,16 +476,16 @@ template {
     --color-toolkit-checkbox-onoff-on-background: #313338;
     --color-toolkit-checkbox-onoff-on-mark-background: #039573;
     --color-toolkit-checkbox-onoff-on-mark-color: #222;
-    --color-toolkit-checkbox-onoff-off-mark-background: #ddd;
+    --color-toolkit-checkbox-onoff-off-mark-background: #fdfbff;
     --color-toolkit-checkbox-onoff-off-mark-color: #222;
     --color-toolkit-checkbox-label-background: #222;
-    --color-toolkit-checkbox-label-border: #333;
+    --color-toolkit-checkbox-wlabel-border: #333;
     --color-toolkit-checkbox-input-border: #039573;
     --color-toolkit-engine-tooltip-border: #333;
     --color-toolkit-engine-tooltip-background: #222;
     --color-toolkit-loader-border: rgba(255, 255, 255, 0.2);
     --color-toolkit-loader-borderleft: rgba(0, 0, 0, 0);
-    --color-doc-code: #ddd;
+    --color-doc-code: #fdfbff;
     --color-doc-code-background: #4d5a6f
 }
 
@@ -730,7 +741,7 @@ template {
 }
 
 .code-highlight .w {
-    color: #bbb
+    color: #fdfbff
 }
 
 .code-highlight .mb {
@@ -1124,7 +1135,7 @@ div.selectable_url pre {
 }
 
 ul.tabs {
-    border-bottom: 1px solid var(--color-toolkit-tabs-section-border);
+    border: 1px solid var(--color-toolkit-tabs-section-border);
     list-style: none;
     padding-left: 0
 }
@@ -1165,14 +1176,14 @@ ul.tabs li {
 
 .tabs>label.active,
 .tabs>li>a.active {
-    border-bottom: 2px solid var(--color-categories-item-border-selected);
-    background: var(--color-categories-item-selected);
+    border: 3px solid var(--color-categories-item-border-selected);
+    background: var(--color-glass-background);
     color: var(--color-categories-item-selected-font)
 }
 
 .tabs>label:hover,
 .tabs>li>a:hover {
-    border-bottom: 2px solid var(--color-categories-item-border-selected)
+    border: 3px solid var(--color-categories-item-border-selected)
 }
 
 .tabs>section {
@@ -1184,8 +1195,8 @@ ul.tabs li {
 }
 
 .tabs>label:last-of-type {
-    border-bottom: 2px solid var(--color-categories-item-border-selected);
-    background: var(--color-categories-item-selected);
+    border: 3px solid var(--color-categories-item-border-selected);
+    background: var(--color-glass-background);
     color: var(--color-categories-item-selected-font);
     letter-spacing: -.1px
 }
@@ -1201,18 +1212,18 @@ html body .tabs>input:checked~section {
 html body .tabs>input:checked~label {
     position: inherited;
     background: inherit;
-    border-bottom: 2px solid transparent;
+    border: 2px solid transparent;
     font-weight: 400;
     color: inherit
 }
 
 html body .tabs>input:checked~label:hover {
-    border-bottom: 2px solid var(--color-categories-item-border-selected)
+    border: 3px solid var(--color-categories-item-border-selected)
 }
 
 html body .tabs>input:checked+label {
-    border-bottom: 2px solid var(--color-categories-item-border-selected);
-    background: var(--color-categories-item-selected);
+    border: 3px solid var(--color-categories-item-border-selected);
+    background: var(--color-glass-background);
     color: var(--color-categories-item-selected-font)
 }
 
@@ -1537,7 +1548,7 @@ th:hover .engine-tooltip {
 /*! Autocomplete.js v2.6.3 | license MIT | (c) 2017, Baptiste Donaux | http://autocomplete-js.com */
 .autocomplete {
     position: absolute;
-    width: 44rem;
+    width: 90%;
     max-height: 0;
     overflow-y: hidden;
     text-align: left;
@@ -1609,7 +1620,7 @@ th:hover .engine-tooltip {
 
 @media screen and (max-width:50em) {
     .autocomplete {
-        width: 100%
+        width: 90%
     }
 
     .autocomplete>ul>li {
@@ -1677,7 +1688,7 @@ article.result-images .detail {
 }
 
 #results.image-detail-open article.result-images[data-vim-selected] .detail .result-images-labels hr {
-    border-top: 1px solid var(--color-result-detail-hr);
+    border-top: 0px solid var(--color-result-detail-hr);
     border-bottom: none
 }
 
@@ -1928,7 +1939,7 @@ iframe[src^="https://genius.com/songs"] {
     color: #fff;
     background-color: #238636;
     border: #2ea043;
-    border-radius: 10px !important;
+    wborder-radius: 10px !important;
     box-shadow: transparent 0 0 0 0
 }
 
@@ -2469,12 +2480,12 @@ table.engine-error th.engine-error-type {
 }
 
 #main_index {
-    margin-top: 26vh;
     text-align: left;
 }
 
 .index {
     text-align: center;
+    margin-top: 26vh;
 }
 
 .index .title {
@@ -2505,7 +2516,7 @@ table.engine-error th.engine-error-type {
 }
 
 .index .category label {
-    padding: 6px 10px;
+    padding: 6px 10px 6px;
     border-bottom: initial !important
 }
 
@@ -2623,13 +2634,14 @@ table.engine-error th.engine-error-type {
 }
 
 #main_preferences .category label {
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     padding: .2rem .4rem;
     border-radius: 5px
 }
 
 #main_preferences .category input[type=checkbox]:checked+label {
-    border: 2px solid var(--color-categories-item-border-selected)
+    border: 3px solid var(--color-categories-item-border-selected);
+    border-radius: 8px;
 }
 
 #main_preferences table.table_engines td {
@@ -2733,25 +2745,29 @@ table.engine-error th.engine-error-type {
 }
 
 #search_header {
-    padding-top: 1.5em;
+    /*padding-top: 1.5em;
     padding-right: 2em;
-    padding-left: 7rem;
+    padding-left: 7rem;*/
     margin: 0;
     /*background: var(--color-header-background);*/
     background: transparent;
-    border-bottom: 0px solid var(--color-header-border);
+    /*border-bottom: 0px solid var(--color-header-border);
     display: grid;
     column-gap: 1.2rem;
     row-gap: 1rem;
     grid-template-columns: 3rem 1fr;
-    grid-template-areas: "logo search" "spacer categories";
+    grid-template-areas: "logo search" "spacer categories";*/
 }
 
 .category {
     display: inline-block;
     position: relative;
     margin-right: 1rem;
-    padding: 0
+    padding: 5
+    background: var(--color-glass-background);  /* White color with 20% opacity> */
+    border-radius: 8px; /* Rounded borders */
+    backdrop-filter: blur(80px); /* Blurred background */
+    -webkit-backdrop-filter: blur(80px); /* For Safari browser compatibility */
 }
 
 .category input {
@@ -2760,11 +2776,11 @@ table.engine-error th.engine-error-type {
 
 .category label {
     cursor: pointer;
-    padding: .2rem 0;
+    padding: 5px 8px 5px;
     display: inline-flex;
     text-transform: capitalize;
     font-size: .9em;
-    border-bottom: 2px solid transparent;
+    border: 3px solid transparent;
     -webkit-touch-callout: none;
     user-select: none
 }
@@ -2777,9 +2793,11 @@ table.engine-error th.engine-error-type {
     margin: auto 0
 }
 
+/*This edits the tabs under the search. EX// general, images, videos, etc.*/
 .category input[type=checkbox]:checked+label {
     color: var(--color-categories-item-selected-font);
-    border-bottom: 2px solid var(--color-categories-item-border-selected)
+    border: 2px solid var(--color-categories-item-border-selected);
+    border-radius: 8px;
 }
 
 #search_logo {
@@ -2815,7 +2833,7 @@ table.engine-error th.engine-error-type {
 }
 
 #search_view {
-    grid-area: search;
+   /* grid-area: search;*/
 
 }
 
@@ -2994,7 +3012,7 @@ html.no-js #clear_search.hide_if_nojs {
     }
 
     .search_box {
-        width: 98%;
+        width: 90%;
         display: flex;
         margin: 0 auto
     }
@@ -3012,6 +3030,7 @@ html.no-js #clear_search.hide_if_nojs {
         display: inline-block;
         width: auto;
         margin: 0
+     
     }
 
     .category label {
@@ -3078,11 +3097,6 @@ html.no-js #clear_search.hide_if_nojs {
 
 #categories_container {
     position: relative
-    background: black; /*rgba(0, 0, 0, 0.5); /* White color with 20% opacity */
-    border-radius: 10px; /* Rounded borders */
-    /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
-    backdrop-filter: blur(80px); /* Blurred background */
-    -webkit-backdrop-filter: blur(80px); /* For Safari browser compatibility */
     padding: 12px; /* Space inside the div */
     border: 0px solid rgba(255, 255, 255, 0.3);
     border-left: .2rem solid transparent
@@ -3623,6 +3637,7 @@ article[data-vim-selected].category-videos {
     margin: 0;
     padding: 0;
     border: none;
+    border-radius: 10px;
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -3896,20 +3911,16 @@ summary.title {
 }
 
 #search_url div.selectable_url pre {
-    width: 200em
+    width: 100em
 }
 
 #links_on_top {
-    position: absolute;
-    right: 1.8rem;
-    text-align: center;/*right;*/
-    top: 0.2rem;
-    padding: 0;
-    border: 0;
+    text-align: left;
+    /*top: 0.2rem;*/
     display: flex;
     align-items: center;
     font-size: 1em;
-    color: var(--color-search-font);
+    color: var(--color-base-title);
     background: var(--color-glass-background) /* White color with 20% opacity */
     border-radius: 10px; /* Rounded borders */
     /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
@@ -3958,7 +3969,7 @@ summary.title {
 #links_on_top a:hover *,
 #links_on_top a:link *,
 #links_on_top a:visited * {
-    color: var(--color-search-font)
+    color: var(--color-base-title)
 }
 
 #pagination {
@@ -4221,7 +4232,8 @@ summary.title {
     }
 
     .result-images {
-        border-bottom: none !important
+        border-bottom: none !important;
+        border-radius: 10px;
     }
 
     .image_result {
