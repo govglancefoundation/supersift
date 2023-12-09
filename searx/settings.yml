@@ -341,10 +341,10 @@ engines:
     shortcut: wp
     base_url: 'https://{language}.wikipedia.org/'
 
-  - name: bing
-    engine: bing
-    shortcut: bi
-    disabled: false
+  # - name: bing
+  #   engine: bing
+  #   shortcut: bi
+  #   disabled: false
 
   - name: bing images
     engine: bing_images
@@ -540,40 +540,40 @@ engines:
       require_api_key: false
       results: JSON
 
-  - name: google
-    engine: google
-    shortcut: go
-    disabled: true
+  # - name: google
+  #   engine: google
+  #   shortcut: go
+  #   disabled: true
 
-  - name: google images
-    engine: google_images
-    shortcut: goi
+  # - name: google images
+  #   engine: google_images
+  #   shortcut: goi
 
-  - name: google news
-    engine: google_news
-    shortcut: gon
+  # - name: google news
+  #   engine: google_news
+  #   shortcut: gon
 
-  - name: google videos
-    engine: google_videos
-    shortcut: gov
+  # - name: google videos
+  #   engine: google_videos
+  #   shortcut: gov
 
-  - name: google scholar
-    engine: google_scholar
-    shortcut: gos
+  # - name: google scholar
+  #   engine: google_scholar
+  #   shortcut: gos
 
-  - name: google play apps
-    engine: google_play
-    categories: [files, apps]
-    shortcut: gpa
-    play_categ: apps
-    disabled: true
+  # - name: google play apps
+  #   engine: google_play
+  #   categories: [files, apps]
+  #   shortcut: gpa
+  #   play_categ: apps
+  #   disabled: true
 
-  - name: google play movies
-    engine: google_play
-    categories: videos
-    shortcut: gpm
-    play_categ: movies
-    disabled: true
+  # - name: google play movies
+  #   engine: google_play
+  #   categories: videos
+  #   shortcut: gpm
+  #   play_categ: movies
+  #   disabled: true
 
   - name: gpodder
     engine: json_engine
@@ -2158,33 +2158,33 @@ engines:
     shortcut: wttr
     timeout: 9.0
 
-  - name: brave
-    shortcut: brave
-    engine: xpath
-    paging: true
-    time_range_support: true
-    first_page_num: 0
-    time_range_url: "&tf={time_range_val}"
-    search_url: https://search.brave.com/search?q={query}&offset={pageno}&spellcheck=1{time_range}
-    url_xpath: //a[@class="result-header"]/@href
-    title_xpath: //span[@class="snippet-title"]
-    content_xpath: //p[1][@class="snippet-description"]
-    suggestion_xpath: //div[@class="text-gray h6"]/a
-    time_range_map:
-      day: 'pd'
-      week: 'pw'
-      month: 'pm'
-      year: 'py'
-    categories: [general, web]
-    disabled: false
-    headers:
-      Accept-Encoding: gzip, deflate
-    about:
-      website: https://brave.com/search/
-      wikidata_id: Q107355971
-      use_official_api: false
-      require_api_key: false
-      results: HTML
+  # - name: brave
+  #   shortcut: brave
+  #   engine: xpath
+  #   paging: true
+  #   time_range_support: true
+  #   first_page_num: 0
+  #   time_range_url: "&tf={time_range_val}"
+  #   search_url: https://search.brave.com/search?q={query}&offset={pageno}&spellcheck=1{time_range}
+  #   url_xpath: //a[@class="result-header"]/@href
+  #   title_xpath: //span[@class="snippet-title"]
+  #   content_xpath: //p[1][@class="snippet-description"]
+  #   suggestion_xpath: //div[@class="text-gray h6"]/a
+  #   time_range_map:
+  #     day: 'pd'
+  #     week: 'pw'
+  #     month: 'pm'
+  #     year: 'py'
+  #   categories: [general, web]
+  #   disabled: false
+  #   headers:
+  #     Accept-Encoding: gzip, deflate
+  #   about:
+  #     website: https://brave.com/search/
+  #     wikidata_id: Q107355971
+  #     use_official_api: false
+  #     require_api_key: false
+  #     results: HTML
 
   - name: lib.rs
     shortcut: lrs
