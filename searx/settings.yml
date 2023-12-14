@@ -23,12 +23,10 @@ brand:
 search:
   # Filter results. 0: None, 1: Moderate, 2: Strict
   safe_search: 1
-  # Existing autocomplete backends: "dbpedia", "duckduckgo", "google", "yandex", "mwmbl",
-  # "seznam", "startpage", "swisscows", "qwant", "wikipedia" - leave blank to turn it off
   # by default.
-  autocomplete: "duckduckgo"
+  autocomplete: "wikipedia"
   # minimun characters to type before autocompleter starts
-  autocomplete_min: 4
+  autocomplete_min: 2
   # Default search language - leave blank to detect from browser information or
   # use codes from 'languages.py'
   default_lang: "auto"
@@ -113,7 +111,7 @@ ui:
   # ui theme
   default_theme: simple
   # center the results ?
-  center_alignment: false
+  center_alignment: true
   # URL prefix of the internet archive, don't forget trailing slash (if needed).
   # cache_url: "https://webcache.googleusercontent.com/search?q=cache:"
   # Default interface locale - leave blank to detect from browser information or
@@ -126,7 +124,7 @@ ui:
     simple_style: auto
   # Perform search immediately if a category selected.
   # Disable to select multiple categories at once and start the search manually.
-  #search_on_category_select: true
+#  search_on_category_select: false
   # Hotkeys: default or vim
   #hotkeys: default
 
@@ -285,19 +283,24 @@ checker:
 
 categories_as_tabs:
   general:
-  governmnet:
-  images:
-  videos:
-  map:
-  music:
+  government:
   science:
+  tech:
   files:
+  map:
+  images:
+  books:
+  videos:
+  movies:
+  music:
+  podcasts:
+  wiki:
 
 engines:
 
   - name: annas archive
     engine: annas_archive
-    disabled: true
+    disabled: false
     shortcut: aa
 
   - name: apk mirror
@@ -310,13 +313,6 @@ engines:
     engine: apple_app_store
     shortcut: aps
     disabled: true
-
-
-  - name: ahmia
-    engine: ahmia
-    categories: onions
-    enable_http: true
-    shortcut: ah
 
   - name: arch linux wiki
     engine: archlinux
@@ -331,6 +327,7 @@ engines:
     engine: arxiv
     shortcut: arx
     timeout: 4.0
+    categories: [general, science]
 
   - name: bandcamp
     engine: bandcamp
@@ -366,7 +363,7 @@ engines:
     url_xpath: //article[@class="repo-summary"]//a[@class="repo-link"]/@href
     title_xpath: //article[@class="repo-summary"]//a[@class="repo-link"]
     content_xpath: //article[@class="repo-summary"]/p
-    categories: [it, repos]
+    categories: [tech, repos]
     timeout: 4.0
     disabled: true
     shortcut: bb
@@ -391,17 +388,17 @@ engines:
     engine: crossref
     shortcut: cr
     timeout: 30
-    disabled: true
+    disabled: false
 
   - name: currency
     engine: currency_convert
     categories: general
     shortcut: cc
 
-  - name: deezer
-    engine: deezer
-    shortcut: dz
-    disabled: true
+  #- name: deezer
+  #  engine: deezer
+  #  shortcut: dz
+  #  disabled: true
 
   - name: deviantart
     engine: deviantart
@@ -418,7 +415,7 @@ engines:
   - name: docker hub
     engine: docker_hub
     shortcut: dh
-    categories: [it, packages]
+    categories: [tech, packages]
 
   - name: wikidata
     engine: wikidata
@@ -428,9 +425,9 @@ engines:
     tests: *tests_infobox
     disabled: true
 
-  - name: duckduckgo
-    engine: duckduckgo
-    shortcut: ddg
+  #- name: duckduckgo
+  #  engine: duckduckgo
+  #  shortcut: ddg
 
   - name: duckduckgo images
     engine: duckduckgo_images
@@ -486,7 +483,7 @@ engines:
   - name: free software directory
     engine: mediawiki
     shortcut: fsd
-    categories: [it, software wikis]
+    categories: [tech, software wikis]
     base_url: https://directory.fsf.org/
     number_of_results: 5
     search_type: title
@@ -508,7 +505,7 @@ engines:
     title_query: name_with_namespace
     content_query: description
     page_size: 20
-    categories: [it, repos]
+    categories: [tech, repos]
     shortcut: gl
     timeout: 10.0
     disabled: true
@@ -530,7 +527,7 @@ engines:
     url_query: html_url
     title_query: name
     content_query: description
-    categories: [it, repos]
+    categories: [tech, repos]
     shortcut: cb
     disabled: true
     about:
@@ -558,9 +555,10 @@ engines:
   #   engine: google_videos
   #   shortcut: gov
 
-  # - name: google scholar
-  #   engine: google_scholar
-  #   shortcut: gos
+   #- name: google scholar
+   #  engine: google_scholar
+   #  shortcut: gos
+     #categories: [general, science]
 
   # - name: google play apps
   #   engine: google_play
@@ -586,8 +584,8 @@ engines:
     title_query: title
     content_query: description
     page_size: 19
-    categories: music
-    disabled: true
+    categories:  podcasts
+    disabled: false
     about:
       website: https://gpodder.net
       wikidata_id: Q3093354
@@ -599,8 +597,16 @@ engines:
   - name: imdb
     engine: imdb
     shortcut: imdb
-    timeout: 6.0
-    disabled: true
+    timeout: 3.0
+    disabled: false
+    categories: movies
+
+#  - name: imdb_general
+#    engine: imdb
+#    shortcut: imdb_gen
+#    timeout: 3.0
+#    disabled: true
+#    categories: general
 
   - name: library genesis
     engine: xpath
@@ -610,7 +616,7 @@ engines:
     content_xpath: //td/a[1][contains(@href,"=author")]/text()
     categories: files
     timeout: 7.0
-    disabled: true
+    disabled: false
     shortcut: lg
     about:
       website: https://libgen.fun/
@@ -650,9 +656,9 @@ engines:
       require_api_key: false
       results: HTML
 
-  - name: mixcloud
-    engine: mixcloud
-    shortcut: mc
+#  - name: mixcloud
+#    engine: mixcloud
+#    shortcut: mc
 
   - name: npm
     engine: json_engine
@@ -664,7 +670,7 @@ engines:
     title_query: package/name
     content_query: package/description
     page_size: 25
-    categories: [it, packages]
+    categories: [tech, packages]
     disabled: true
     timeout: 5.0
     shortcut: npm
@@ -747,7 +753,7 @@ engines:
     url_query: url
     title_query: name
     content_query: description
-    categories: [it, packages]
+    categories: [tech, packages]
     disabled: true
     timeout: 5.0
     shortcut: pack
@@ -763,9 +769,9 @@ engines:
     engine: pdbe
     shortcut: pdb
 
-  - name: photon
-    engine: photon
-    shortcut: ph
+ # - name: photon
+ #   engine: photon
+ #   shortcut: ph
 
   - name: pub.dev
     engine: xpath
@@ -776,7 +782,7 @@ engines:
     url_xpath: ./div/h3/a/@href
     title_xpath: ./div/h3/a
     content_xpath: ./p[@class="packages-description"]
-    categories: [packages, it]
+    categories: [packages, tech]
     timeout: 3.0
     disabled: true
     first_page_num: 1
@@ -791,6 +797,7 @@ engines:
     engine: pubmed
     shortcut: pub
     timeout: 3.0
+    categories: [general, science]
 
   - name: pypi
     shortcut: pypi
@@ -803,7 +810,7 @@ engines:
     content_xpath: ./p
     suggestion_xpath: /html/body/main/div/div/div/form/div/div[@class="callout-block"]/p/span/a[@class="link"]
     first_page_num: 1
-    categories: [it, packages]
+    categories: [tech, packages]
     about:
       website: https://pypi.org
       wikidata_id: Q2984686
@@ -812,43 +819,39 @@ engines:
       require_api_key: false
       results: HTML
 
-  - name: qwant
-    qwant_categ: web
-    engine: qwant
-    shortcut: qw
-    categories: [general, web]
-    additional_tests:
-      rosebud: *test_rosebud
+  #- name: qwant
+  #  qwant_categ: web
+  #  engine: qwant
+  #  shortcut: qw
+  #  categories: [general, web]
+  #  additional_tests:
+  #    rosebud: *test_rosebud
 
-  - name: qwant news
-    qwant_categ: news
-    engine: qwant
-    shortcut: qwn
-    categories: news
-    network: qwant
+  #- name: qwant news
+  #  qwant_categ: news
+  #  engine: qwant
+  #  shortcut: qwn
+  #  categories: news
+  #  network: qwant
 
-  - name: qwant images
-    qwant_categ: images
-    engine: qwant
-    shortcut: qwi
-    categories: [images, web]
-    network: qwant
+  #- name: qwant images
+  #  qwant_categ: images
+  #  engine: qwant
+  #  shortcut: qwi
+  #  categories: [images, web]
+  #  network: qwant
 
-  - name: qwant videos
-    qwant_categ: videos
-    engine: qwant
-    shortcut: qwv
-    categories: [videos, web]
-    network: qwant
+  #- name: qwant videos
+  #  qwant_categ: videos
+  #  engine: qwant
+  #  shortcut: qwv
+  #  categories: [videos, web]
+  #  network: qwant
 
   - name: reddit
     engine: reddit
     shortcut: re
     page_size: 25
-
-  - name: sepiasearch
-    engine: sepiasearch
-    shortcut: sep
 
   - name: soundcloud
     engine: soundcloud
@@ -858,13 +861,7 @@ engines:
     engine: stackexchange
     shortcut: st
     api_site: 'stackoverflow'
-    categories: [it, q&a]
-
-  - name: superuser
-    engine: stackexchange
-    shortcut: su
-    api_site: 'superuser'
-    categories: [it, q&a]
+    categories: [tech, q&a]
 
   - name: searchcode code
     engine: searchcode_code
@@ -878,33 +875,15 @@ engines:
 
   - name: semantic scholar
     engine: semantic_scholar
-    disabled: true
+    disabled: false
     shortcut: se
-
-  - name: startpage
-    engine: startpage
-    shortcut: sp
-    timeout: 6.0
-    disabled:
-    additional_tests:
-      rosebud: *test_rosebud
-
-  - name: solidtorrents
-    engine: solidtorrents
-    shortcut: solid
-    timeout: 4.0
-    base_url:
-      - https://solidtorrents.net
-      - https://solidtorrents.eu
-      - https://solidtorrents.to
-      - https://bitsearch.to
 
   - name: govglance
     engine: sqlite
     disabled: False
     result_template: default.html
     database: /usr/local/searxng/searxng-src/searx/data/govglance.db
-    categories: [government]
+    categories: [general, government]
     query_str:  >-
         SELECT title, pubdate, url, description, title, pubdate, url, description,
             COALESCE( NULLIF(url,''), NULLIF(url,''), url) AS url,
@@ -1915,19 +1894,6 @@ engines:
         WHERE title LIKE :wildcard OR description LIKE :wildcard
         ORDER BY pubdate DESC
 
-  - name: torch
-    engine: xpath
-    paging: true
-    search_url:
-      http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega?P={query}&DEFAULTOP=and
-    results_xpath: //table//tr
-    url_xpath: ./td[2]/a
-    title_xpath: ./td[2]/b
-    content_xpath: ./td[2]/small
-    categories: onions
-    enable_http: true
-    shortcut: tch
-
   - name: twitter
     shortcut: tw
     engine: twitter
@@ -1937,17 +1903,13 @@ engines:
     engine: unsplash
     shortcut: us
 
-  - name: yahoo news
-    engine: yahoo_news
-    shortcut: yhn
-
   - name: youtube
     shortcut: yt
     engine: youtube_noapi
 
-  - name: dailymotion
-    engine: dailymotion
-    shortcut: dm
+  #- name: dailymotion
+   # engine: dailymotion
+   # shortcut: dm
 
   - name: vimeo
     engine: vimeo
@@ -1956,14 +1918,14 @@ engines:
   - name: alexandria
     engine: json_engine
     shortcut: alx
-    categories: general
+    categories: [general, web]
     paging: true
     search_url: https://api.alexandria.org/?a=1&q={query}&p={pageno}
     results_query: results
     title_query: title
     url_query: url
     content_query: snippet
-    timeout: 1.5
+    timeout: 3.0
     disabled: false
     about:
       website: https://alexandria.org/
@@ -1975,7 +1937,7 @@ engines:
   - name: wikibooks
     engine: mediawiki
     shortcut: wb
-    categories: general
+    categories: [general, books]
     base_url: "https://{language}.wikibooks.org/"
     number_of_results: 5
     search_type: text
@@ -2068,10 +2030,10 @@ engines:
     shortcut: tl
     timeout: 5.0
 
-  - name: duden
-    engine: duden
-    shortcut: du
-    disabled: true
+  #- name: duden
+   # engine: duden
+   # shortcut: du
+   # disabled: true
 
   - name: rubygems
     shortcut: rbg
@@ -2084,7 +2046,7 @@ engines:
     content_xpath: ./span/p
     suggestion_xpath: /html/body/main/div/div[@class="search__suggestions"]/p/a
     first_page_num: 1
-    categories: [it, packages]
+    categories: [tech, packages]
     disabled: true
     about:
       website: https://rubygems.org/
@@ -2094,46 +2056,46 @@ engines:
       require_api_key: false
       results: HTML
 
-  - name: rumble
-    engine: rumble
-    shortcut: ru
-    base_url: https://rumble.com/
-    paging: true
-    categories: videos
-    disabled: true
+ # - name: rumble
+ #   engine: rumble
+ #   shortcut: ru
+ #   base_url: https://rumble.com/
+   # paging: true
+  #  categories: videos
+  #  disabled: true
 
   - name: wordnik
     engine: wordnik
     shortcut: def
     base_url: https://www.wordnik.com/
-    categories: [dictionaries]
-    timeout: 5.0
+    categories: [general,dictionaries]
+    timeout: 2.0
 
-  - name: woxikon.de synonyme
-    engine: xpath
-    shortcut: woxi
-    categories: [dictionaries]
-    timeout: 5.0
-    disabled: true
-    search_url: https://synonyme.woxikon.de/synonyme/{query}.php
-    url_xpath: //div[@class="upper-synonyms"]/a/@href
-    content_xpath: //div[@class="synonyms-list-group"]
-    title_xpath: //div[@class="upper-synonyms"]/a
-    no_result_for_http_status: [404]
-    about:
-      website: https://www.woxikon.de/
-      wikidata_id:
-      use_official_api: false
-      require_api_key: false
-      results: HTML
-      language: de
+#  - name: woxikon.de synonyme
+ #   engine: xpath
+##    shortcut: woxi
+ #   categories: [dictionaries]
+ #   timeout: 5.0
+ #   disabled: true
+ #   search_url: https://synonyme.woxikon.de/synonyme/{query}.php
+ #   url_xpath: //div[@class="upper-synonyms"]/a/@href
+ #   content_xpath: //div[@class="synonyms-list-group"]
+ #   title_xpath: //div[@class="upper-synonyms"]/a
+ #   no_result_for_http_status: [404]
+ #   about:
+ #     website: https://www.woxikon.de/
+ #     wikidata_id:
+ #     use_official_api: false
+ #     require_api_key: false
+ #     results: HTML
+ #     language: de
 
-  - name: sjp.pwn
-    engine: sjp
-    shortcut: sjp
-    base_url: https://sjp.pwn.pl/
-    timeout: 5.0
-    disabled: true
+ # - name: sjp.pwn
+ #   engine: sjp
+ #   shortcut: sjp
+ #   base_url: https://sjp.pwn.pl/
+ #   timeout: 5.0
+ #   disabled: true
 
   - name: wikimini
     engine: xpath
@@ -2193,7 +2155,7 @@ engines:
     url_xpath: ./@href
     title_xpath: ./div[@class="h"]/h4
     content_xpath: ./div[@class="h"]/p
-    categories: [it, packages]
+    categories: [tech, packages]
     disabled: true
     about:
       website: https://lib.rs
@@ -2212,7 +2174,7 @@ engines:
     title_xpath: ./h4/a[2]
     content_xpath: ./p
     first_page_num: 1
-    categories: [it, repos]
+    categories: [tech, repos]
     disabled: true
     about:
       website: https://sr.ht

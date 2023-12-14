@@ -158,8 +158,16 @@
   <form id="search_form" method="post" action="{{ url_for('preferences') }}" autocomplete="off">
     {{- tabs_open() -}}
 
+    {{- tab_header('maintab', 'engines', _('Sources'), True) -}}
+    <p>
+      {{- _('Currently used sources') -}}
+    </p>
+    {{- tabs_open() -}}
+    {%- include 'simple/preferences/engines.html' -%}
 
-    {{- tab_header('maintab', 'general', _('General'), True) -}}
+    {{- tab_footer() -}}
+    {{- tab_header('maintab', 'general', _('Settings')) -}}
+
     {%- if 'categories' not in locked_preferences -%}
       <fieldset>
         <legend>{{- _('Default categories') -}}</legend>
@@ -214,12 +222,6 @@
     {{- plugin_preferences('privacy') -}}
     {{- tab_footer() -}}
 
-    {{- tab_header('maintab', 'engines', _('Engines')) -}}
-    <p>
-      {{- _('Currently used search engines') -}}
-    </p>
-    {{- tabs_open() -}}
-    {%- include 'simple/preferences/engines.html' -%}
     {{- tabs_close() -}}
     {{- tab_footer() -}}
 

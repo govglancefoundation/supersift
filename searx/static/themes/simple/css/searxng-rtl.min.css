@@ -180,23 +180,24 @@ template {
 }
 
 :root {
-    --color-base-font: #444;
+   --color-glass-background: rgba(255, 255, 255, 0.5);
+    --color-base-font: #212121;
     --color-base-font-rgb: 68, 68, 68;
-    --color-base-background: #fff;
-    --color-base-background-mobile: #f2f5f8;
-    --color-url-font: #334999;
-    --color-url-visited-font: #9822c3;
+    --color-base-background: #039573;
+    --color-base-background-mobile: #039573;
+    --color-url-font: #039573;
+    --color-url-visited-font: #039573;;
     --color-header-background: #fdfbff;
     --color-header-border: #ddd;
     --color-footer-background: #fdfbff;
     --color-footer-border: #ddd;
     --color-sidebar-border: #ddd;
     --color-sidebar-font: #000;
-    --color-sidebar-background: #fff;
+    --color-sidebar-background: rgba(255, 255, 255, 0.5);
     --color-backtotop-font: #444;
     --color-backtotop-border: #ddd;
     --color-backtotop-background: #fff;
-    --color-btn-background: #3050ff;
+    --color-btn-background: #039573;
     --color-btn-font: #fff;
     --color-show-btn-background: #bbb;
     --color-show-btn-font: #000;
@@ -204,7 +205,7 @@ template {
     --color-search-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
     --color-search-background: #fff;
     --color-search-font: #222;
-    --color-search-background-hover: #3050ff;
+    --color-search-background-hover: #039573;
     --color-error: #db3434;
     --color-error-background: #fae1e1;
     --color-warning: #dbba34;
@@ -216,7 +217,7 @@ template {
     --color-autocomplete-font: #000;
     --color-autocomplete-border: #bbb;
     --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
-    --color-autocomplete-background: #fff;
+    --color-autocomplete-background: rgba(255, 255, 255, 0.5);
     --color-autocomplete-background-hover: #e3e3e3;
     --color-answer-font: #444;
     --color-answer-background: rgba(255, 255, 255, 0.5);
@@ -277,12 +278,13 @@ template {
 
 @media (prefers-color-scheme:dark) {
     :root.theme-auto {
+        --color-glass-background: rgba(0, 0, 0, 0.8);
         --color-base-font: #bbb;
         --color-base-font-rgb: 187, 187, 187;
-        --color-base-background: #222428;
-        --color-base-background-mobile: #222428;
+        --color-base-background: #039573;
+        --color-base-background-mobile: #039573;
         --color-url-font: #039573;
-        --color-url-visited-font: #007157;
+        --color-url-visited-font: #039573;
         --color-header-background: #1e1e22;
         --color-header-border: #333;
         --color-footer-background: #1e1e22;
@@ -374,6 +376,7 @@ template {
 }
 
 :root.theme-dark {
+    --color-glass-background: rgba(0, 0, 0, 0.8);
     --color-base-font: #bbb;
     --color-base-font-rgb: 187, 187, 187;
     --color-base-background: #222428;
@@ -386,7 +389,7 @@ template {
     --color-footer-border: #333;
     --color-sidebar-border: #555;
     --color-sidebar-font: #fff;
-    --color-sidebar-background: #292c34;
+    --color-sidebar-background: rgba(0, 0, 0, 0.8);
     --color-backtotop-font: #bbb;
     --color-backtotop-border: #333;
     --color-backtotop-background: #2b2e36;
@@ -3285,8 +3288,8 @@ article[data-vim-selected].category-videos {
 .result {
     margin: .125rem 0;
     padding: 1rem;
-    border-right: .2rem solid transparent
-    background: rgba(0, 0, 0, 0.5); /* White color with 20% opacity */
+    border-right: .2rem solid transparentl;
+    background: var(--color-glass-background); /* White color with 20% opacity */
     border-radius: 20px; /* Rounded borders */
     /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
     backdrop-filter: blur(50px); /* Blurred background */
@@ -3764,8 +3767,8 @@ summary.title {
 #sidebar {
     grid-area: sidebar;
     word-wrap: break-word;
-    color: var(--color-sidebar-font)
-    background: rgba(0, 0, 0, 0.5); /* White color with 20% opacity */
+    color: var(--color-sidebar-font);
+    background: var(--color-glass-background); /* White color with 20% opacity */
     border-radius: 20px; /* Rounded borders */
     /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
     backdrop-filter: blur(50px); /* Blurred background */

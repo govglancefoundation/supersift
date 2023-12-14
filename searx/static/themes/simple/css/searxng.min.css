@@ -10,8 +10,8 @@ html {
 body {
     margin: 0;
     overscroll-behavior: none;
-   /* overflow-x: hidden;
-    overflow-y: scroll;*/
+   /* overflow-x: hidden;*/
+   /* overflow-y: auto;*/
 
 }
 
@@ -46,7 +46,7 @@ pre {
 }
 
 a {
-    background-color: transparent
+    /*background-color: transparent*/
 }
 
 abbr[title] {
@@ -209,7 +209,7 @@ template {
     --color-header-border: #fdfbff;
     --color-footer-background: #fdfbff;
     --color-footer-border: #fdfbff;
-    --color-sidebar-border: #fdfbff;
+    --color-sidebar-border: transparent;
     --color-sidebar-font: #000;
     --color-sidebar-background: rgba(255, 255, 255, 0.5);
     --color-backtotop-font: #444;
@@ -231,7 +231,7 @@ template {
     --color-success: #42db34;
     --color-success-background: #e3fae1;
     --color-categories-item-selected-font: #039573;
-    --color-categories-item-border-selected: #039573;
+    --color-categories-item-border-selected: transparent;
     --color-autocomplete-font: #000;
     --color-autocomplete-border: #fdfbff;
     --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
@@ -286,8 +286,8 @@ template {
     --color-toolkit-checkbox-label-border: #fdfbff;
     --color-toolkit-checkbox-input-border: #039573;
     --color-toolkit-engine-tooltip-border: #fdfbff;
-    --color-toolkit-engine-tooltip-background: #fff;
-    --color-toolkit-loader-border: rgba(0, 0, 0, 0.2);
+    --color-toolkit-engine-tooltip-background: rgba(255, 255, 255, 0.5);
+    --color-toolkit-loader-border: rgba(0, 0, 0, 0.8);
     --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
     --color-doc-code: #003;
     --color-doc-code-background: #ddeaff
@@ -307,7 +307,7 @@ template {
         --color-header-border: #333;
         --color-footer-background: #1e1e22;
         --color-footer-border: #333;
-        --color-sidebar-border: #555;
+        --color-sidebar-border: transparent;
         --color-sidebar-font: #fff;
         --color-sidebar-background: rgba(0, 0, 0, 0.8);
         --color-backtotop-font: #fdfbff;
@@ -384,7 +384,7 @@ template {
         --color-toolkit-checkbox-label-border: #333;
         --color-toolkit-checkbox-input-border: #039573;
         --color-toolkit-engine-tooltip-border: #333;
-        --color-toolkit-engine-tooltip-background: #222;
+        --color-toolkit-engine-tooltip-background: rgba(0, 0, 0, 0.8);
         --color-toolkit-loader-border: rgba(255, 255, 255, 0.2);
         --color-toolkit-loader-borderleft: rgba(0, 0, 0, 0);
         --color-doc-code: #fdfbff;
@@ -405,7 +405,7 @@ template {
     --color-header-border: #333;
     --color-footer-background: #1e1e22;
     --color-footer-border: #333;
-    --color-sidebar-border: #555;
+    --color-sidebar-border: transparent;
     --color-sidebar-font: #fff;
     --color-sidebar-background: rgba(0, 0, 0, 0.8);
     --color-backtotop-font: #fdfbff;
@@ -482,7 +482,7 @@ template {
     --color-toolkit-checkbox-wlabel-border: #333;
     --color-toolkit-checkbox-input-border: #039573;
     --color-toolkit-engine-tooltip-border: #333;
-    --color-toolkit-engine-tooltip-background: #222;
+    --color-toolkit-engine-tooltip-background: rgba(0, 0, 0, 0.8);
     --color-toolkit-loader-border: rgba(255, 255, 255, 0.2);
     --color-toolkit-loader-borderleft: rgba(0, 0, 0, 0);
     --color-doc-code: #fdfbff;
@@ -1176,14 +1176,14 @@ ul.tabs li {
 
 .tabs>label.active,
 .tabs>li>a.active {
-    border: 3px solid var(--color-categories-item-border-selected);
+    border: solid var(--color-categories-item-border-selected);
     background: var(--color-glass-background);
     color: var(--color-categories-item-selected-font)
 }
 
 .tabs>label:hover,
 .tabs>li>a:hover {
-    border: 3px solid var(--color-categories-item-border-selected)
+    border: solid var(--color-categories-item-border-selected)
 }
 
 .tabs>section {
@@ -1394,7 +1394,7 @@ input.checkbox-onoff[type=checkbox]:checked::before {
 
     input[type=checkbox][disabled]:not(.checkbox-onoff) {
         border: inherit;
-        background-color: transparent !important;
+       /* background-color: transparent !important;*/
         cursor: inherit
     }
 
@@ -2485,7 +2485,7 @@ table.engine-error th.engine-error-type {
 
 .index {
     text-align: center;
-    margin-top: 26vh;
+    /*margin-top: 26vh;*/
 }
 
 .index .title {
@@ -2526,7 +2526,7 @@ table.engine-error th.engine-error-type {
     }
 
     #main_index {
-        margin-top: 6em;
+       /* margin-top: 6em;*/
     }
 }
 
@@ -2640,7 +2640,7 @@ table.engine-error th.engine-error-type {
 }
 
 #main_preferences .category input[type=checkbox]:checked+label {
-    border: 3px solid var(--color-categories-item-border-selected);
+    border: solid var(--color-categories-item-border-selected);
     border-radius: 8px;
 }
 
@@ -2746,11 +2746,11 @@ table.engine-error th.engine-error-type {
 
 #search_header {
     /*padding-top: 1.5em;
-    padding-right: 2em;
-    padding-left: 7rem;*/
+    padding-right: 2em;*/
+    padding-left: 7rem;
     margin: 0;
     /*background: var(--color-header-background);*/
-    background: transparent;
+   /* background: transparent;*/
     /*border-bottom: 0px solid var(--color-header-border);
     display: grid;
     column-gap: 1.2rem;
@@ -2763,7 +2763,7 @@ table.engine-error th.engine-error-type {
     display: inline-block;
     position: relative;
     margin-right: 1rem;
-    padding: 5
+    padding: 5;
     background: var(--color-glass-background);  /* White color with 20% opacity> */
     border-radius: 8px; /* Rounded borders */
     backdrop-filter: blur(80px); /* Blurred background */
@@ -2796,7 +2796,7 @@ table.engine-error th.engine-error-type {
 /*This edits the tabs under the search. EX// general, images, videos, etc.*/
 .category input[type=checkbox]:checked+label {
     color: var(--color-categories-item-selected-font);
-    border: 2px solid var(--color-categories-item-border-selected);
+    border:  solid var(--color-categories-item-border-selected);
     border-radius: 8px;
 }
 
@@ -2833,7 +2833,7 @@ table.engine-error th.engine-error-type {
 }
 
 #search_view {
-   /* grid-area: search;*/
+    grid-area: search;
 
 }
 
@@ -2965,7 +2965,7 @@ html.no-js #clear_search.hide_if_nojs {
 
     #categories {
         font-size: 90%;
-        clear: both
+       /* clear: both*/
     }
 
     #categories .checkbox_container {
@@ -3096,10 +3096,10 @@ html.no-js #clear_search.hide_if_nojs {
 }
 
 #categories_container {
-    position: relative
+    position: relative;
     padding: 12px; /* Space inside the div */
     border: 0px solid rgba(255, 255, 255, 0.3);
-    border-left: .2rem solid transparent
+    border-left: .2rem solid transparent;
 }
 
 @media screen and (min-width:50em) {
@@ -3147,14 +3147,14 @@ html.no-js #clear_search.hide_if_nojs {
         align-items: center
     }
 
-    .center-aligment-yes #main_results #search {
+    .center-aligment-yes #main_results #search{
         width: 100%;
-        display: flex;
+        display: block;
         flex-direction: column;
         align-items: center
     }
 
-    .center-aligment-yes #main_results #search_header {
+    .center-aligment-yes #main_results {
         grid-template-columns: calc(50% - 4.5rem - var(--center-page-width)/ 2) 3rem var(--center-page-width);
         grid-template-areas: "na logo search" "na spacer categories";
         column-gap: 1.2rem;
@@ -3256,7 +3256,6 @@ body {
 
 main {
     width: 100%;
-    margin-bottom: 2rem;
     flex: 1
 }
 
@@ -3347,14 +3346,13 @@ article[data-vim-selected].category-videos {
 }
 
 .result {
-    margin: .2rem 0;
-    padding: 5rem;
+    margin: .5rem 0;
+    padding: 18px;
     background: var(--color-glass-background); /* rgba(255, 255, 255, 0.5); /* White color with 20% opacity */
     border-radius: 20px; /* Rounded borders */
     /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
     backdrop-filter: blur(50px); /* Blurred background */
     -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
-    padding: 18px; /* Space inside the div */
     border: 0px solid rgba(255, 255, 255, 0.3);
     border-left: .2rem solid transparent;
 }
@@ -3805,7 +3803,7 @@ summary.title {
 
 #answers {
     grid-area: answers;
-    background: var(--color-answer-background);
+    background: var(--color-glass-background);
     padding: 1rem;
     margin: 1rem 0;
     margin-top: 0;
@@ -3828,15 +3826,14 @@ summary.title {
 #sidebar {
     grid-area: sidebar;
     word-wrap: break-word;
-    color: var(--color-sidebar-font)
-    background: rgba(0, 0, 0, 0.5); /* White color with 20% opacity */
+    color: var(--color-sidebar-font);
+    background: var(--color-glass-background); /* White color with 20% opacity */
     border-radius: 20px; /* Rounded borders */
     /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
     backdrop-filter: blur(50px); /* Blurred background */
     -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
     padding: 18px; /* Space inside the div */
     border: 0px solid rgba(255, 255, 255, 0.3);
-    border-left: .2rem solid transparent
 }
 
 #sidebar .infobox {
@@ -3918,7 +3915,7 @@ summary.title {
     text-align: left;
     /*top: 0.2rem;*/
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     font-size: 1em;
     color: var(--color-base-title);
     background: var(--color-glass-background) /* White color with 20% opacity */
@@ -3928,16 +3925,13 @@ summary.title {
     -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
     padding: 12px; /* Space inside the div */
     border: 0px solid rgba(255, 255, 255, 0.3);
-    border-left: .2rem solid transparent
 }
 
 #nav_bar {
     position: absolute;
     left: 1.8rem;
     text-align: center;/*right;*/
-    top: 2.2rem;
-    padding: 0;
-    border: 0;
+    /*top: 0rem;*/
     display: flex;
     align-items: center;
     font-size: 1em;
@@ -3949,7 +3943,6 @@ summary.title {
     -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
     padding: 12px; /* Space inside the div */
     border: 0px solid rgba(255, 255, 255, 0.3);
-    border-left: .2rem solid transparent
 }
 
 
