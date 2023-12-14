@@ -6,6 +6,7 @@ the PostgreSQL engine, you must install the dependency ``psychopg2``.
 Example
 =======
 
+
 Below is an example configuration:
 
 .. code:: yaml

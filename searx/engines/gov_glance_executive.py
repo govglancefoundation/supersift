@@ -3,6 +3,7 @@
 """PostgreSQL is a powerful and robust open source database.  Before configuring
 the PostgreSQL engine, you must install the dependency ``psychopg2``.
 
+
 Example
 =======
 
