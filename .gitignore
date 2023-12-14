@@ -27,3 +27,4 @@ searx/version_frozen.py
 searx/data/*.db
 .bash_profile
 
+/Users/santiagosaldivar/Coding/supersift/searx/settings.yml
