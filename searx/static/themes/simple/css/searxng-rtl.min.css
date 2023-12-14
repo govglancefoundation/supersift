@@ -2734,7 +2734,7 @@ table.engine-error th.engine-error-type {
     display: inline-block;
     position: relative;
     margin-left: 1rem;
-    padding: 0
+    padding: 5;
 }
 
 .category input {
@@ -2979,7 +2979,8 @@ html.no-js #clear_search.hide_if_nojs {
     .category {
         display: inline-block;
         width: auto;
-        margin: 0
+        margin: 0;
+        padding:  5;
     }
 
     .category label {

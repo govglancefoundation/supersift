@@ -2760,10 +2760,13 @@ table.engine-error th.engine-error-type {
 }
 
 .category {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     position: relative;
-    margin-right: 1rem;
-    padding: 5;
+    /*margin-right: 1rem;*/
+    padding: 0px;
+    margin: 5px;
     background: var(--color-glass-background);  /* White color with 20% opacity> */
     border-radius: 8px; /* Rounded borders */
     backdrop-filter: blur(80px); /* Blurred background */
@@ -2815,7 +2818,7 @@ table.engine-error th.engine-error-type {
 }
 
 .search_categories {
-    grid-area: categories
+   grid-area: categories;
 }
 
 .search_categories .help {
@@ -2978,22 +2981,26 @@ html.no-js #clear_search.hide_if_nojs {
 
     #main_index #categories_container,
     #main_results #categories_container {
-        width: max-content
+        /*width: max-content*/
     }
 
     #main_index #categories_container .category,
     #main_results #categories_container .category {
-        display: inline-block;
-        width: auto
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: auto;
+        padding: 0px;
+        margin: 5px;
     }
 
     #main_index #categories,
     #main_results #categories {
         width: 100%;
         text-align: left;
-        overflow-x: scroll;
+        /*overflow-x: visible;
         overflow-y: hidden;
-        -webkit-overflow-scrolling: touch
+        -webkit-overflow-scrolling: touch*/
     }
 }
 
@@ -3027,10 +3034,12 @@ html.no-js #clear_search.hide_if_nojs {
     }
 
     .category {
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         width: auto;
-        margin: 0
-     
+        margin: 5px;
+        padding: 0px; 
     }
 
     .category label {
@@ -3097,7 +3106,7 @@ html.no-js #clear_search.hide_if_nojs {
 
 #categories_container {
     position: relative;
-    padding: 12px; /* Space inside the div */
+    padding: 12px; /* Space between the categories and search bar */
     border: 0px solid rgba(255, 255, 255, 0.3);
     border-left: .2rem solid transparent;
 }
