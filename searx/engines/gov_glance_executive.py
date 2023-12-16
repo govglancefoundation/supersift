@@ -30,7 +30,7 @@ except ImportError:
     # manually to use the engine.
     pass
 
-engine_type = 'online'
+engine_type = 'offline'
 host = "db-postgresql-nyc1-03135-do-user-9254433-0.b.db.ondigitalocean.com"
 port = "25060"
 database = ""
