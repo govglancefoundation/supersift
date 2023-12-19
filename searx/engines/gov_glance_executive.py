@@ -77,9 +77,9 @@ def _fetch_results(cur):
 
     try:
         for column_desc in cur.description:
-            if column_desc.title:
+            try:
                 titles.append(column_desc.name)
-            else:
+            except:
                 titles.append('')
         # titles = [column_desc.title for column_desc in cur.description]
 
