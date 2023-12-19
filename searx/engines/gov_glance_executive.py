@@ -76,7 +76,12 @@ def _fetch_results(cur):
     titles = []
 
     try:
-        titles = [column_desc.title for column_desc in cur.description]
+        for column_desc in cur.description:
+            if column_desc.title:
+                titles.append(column_desc.name)
+            else:
+                titles.append('')
+        # titles = [column_desc.title for column_desc in cur.description]
 
         for res in cur:
             result = dict(zip(titles, map(str, res)))
