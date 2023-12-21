@@ -31,7 +31,7 @@ except ImportError:
 
 engine_type = 'online'
 host = "db-postgresql-nyc1-03135-do-user-9254433-0.b.db.ondigitalocean.com"
-port = "25060"
+port = "25061"
 database = ""
 username = ""
 password = ""
