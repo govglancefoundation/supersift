@@ -62,6 +62,11 @@
         <a href="{{ url_for('preferences') }}" class="link_on_top_preferences">{{ icon_big('menu-outline') }}<span>{{ _('Preferences') }}</span></a>
       {%- endblock -%}
     </nav>
+    {% include 'simple/search_copy.html' %}
+    {% block header %}
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
    </div>
   </main>
   <!--[if gte IE 9]>-->
