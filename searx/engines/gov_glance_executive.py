@@ -39,7 +39,7 @@ password = ""
 query_str = ""
 limit = 10
 paging = True
-result_template = 'key-value.html'
+result_template = 'default.html'
 _connection = None
 
 
