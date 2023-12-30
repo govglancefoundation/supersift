@@ -9,9 +9,12 @@
     {{- (value, "url_wrapper") -}}
     <span class="url_o1"><span class="url_i1">{{- value -}}</span></span>
     {% endif %}
-    <tr>
-        <td><b>{{ key|upper }}</b>: {{ value }}</td>
-    </tr>
+    {% if key == 'title' %}
+    <h3>{{ value }}</h3>
+    {% endif %}
+    {% if key == 'description' %}
+    <p class="content">{{ value }}</p>
+    {% endif %}
 
 
 {% endfor %}
