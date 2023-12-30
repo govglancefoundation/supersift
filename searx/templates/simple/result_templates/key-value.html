@@ -3,14 +3,15 @@
 {% if key in ['engine', 'engines', 'template', 'score', 'category', 'positions', 'pretty_url', 'parsed_url'] %}
     {% continue %}
 {% endif %}
-<article class="result">
-{% if key in ['url', 'details_link'] %}
-{{- (value, "url_wrapper") -}}
-{% endif %}
-<tr>
-    <td><b>{{ key|upper }}</b>: {{ value }}</td>
-</tr>
-{% endfor %}
-<div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
+    <article class="result">
+    {% if key in ['url', 'details_link'] %}
+    {{- (value, "url_wrapper") -}}
+    {% endif %}
+    <tr>
+        <td><b>{{ key|upper }}</b>: {{ value }}</td>
+    </tr>
+    <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
 </article>
+{% endfor %}
+
 
