@@ -1,11 +1,14 @@
-<table>
-    {% for key, value in result.items() %}
-    {% if key in ['engine', 'engines', 'template', 'score', 'category', 'positions', 'pretty_url', 'parsed_url'] %}
-        {% continue %}
-    {% endif %}
-    <tr>
-        <td><b>{{ key|upper }}</b>: {{ value }}</td>
-    </tr>
-    {% endfor %}
-</table>
+
+{% for key, value in result.items() %}
+{% if key in ['engine', 'engines', 'template', 'score', 'category', 'positions', 'pretty_url', 'parsed_url'] %}
+    {% continue %}
+{% endif %}
+<article class="result {% if result['template'] %}result-{{ result.template|replace('.html', '') }}{% else %}result-default{% endif %} {% if result['category'] %}category-{{ result['category'] }}{% endif %}{% for e in result.engines %} {{ e }}{% endfor %}">
+{{- result_open_link(result.url, "url_wrapper") -}}
+<tr>
+    <td><b>{{ key|upper }}</b>: {{ value }}</td>
+</tr>
+{% endfor %}
 <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
+</article>
+
