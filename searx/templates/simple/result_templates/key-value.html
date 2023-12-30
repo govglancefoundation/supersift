@@ -7,6 +7,7 @@
 
     {% if key in ['url', 'document_link'] %}
     {{- (value, "url_wrapper") -}}
+    <span class="url_o1"><span class="url_i1">{{- value -}}</span></span>
     {% endif %}
 
     <span class="url_o{{loop.index}}"><span class="url_i{{loop.index}}">{{- part -}}</span></span>
