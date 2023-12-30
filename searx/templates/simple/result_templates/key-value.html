@@ -6,12 +6,16 @@
 {% endif %}
 
     {% if key in ['url', 'document_link'] %}
-    <span class="url_o1"><span class="url_i1">{{- value -}}</span></span>
+    {% with url={{ value }} %}
+
+    {% endwith %}
     {% endif %}
+    <span class="url_o1"><span class="url_i1">{{ url }}</span></span>
     {% if key == 'title' %}
     <h3>
+        <a href="{{ url }}">
         <span class="highlight">{{ value }}</span>
-
+        </a>
     </h3>
     {% endif %}
     {% if key == 'description' %}
