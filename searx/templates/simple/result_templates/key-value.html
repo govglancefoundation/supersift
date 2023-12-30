@@ -6,11 +6,15 @@
 {% endif %}
 
     {% if key in ['url', 'document_link'] %}
-    {{- (value, "url_wrapper") -}}
-    <span class="url_o1"><span class="url_i1">{{- value -}}</span></span>
+    {% with url={{- value - }} %}
     {% endif %}
+    <span class="url_o1"><span class="url_i1">{{- url -}}</span></span>
     {% if key == 'title' %}
-    <h3>{{ value }}</h3>
+    <h3>
+        <a href=url class="cache_link">
+        <span class="highlight">{{ value }}</span>
+        </a>
+    </h3>
     {% endif %}
     {% if key == 'description' %}
     <p class="content">{{ value }}</p>
