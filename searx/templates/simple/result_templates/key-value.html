@@ -5,9 +5,11 @@
     {% continue %}
 {% endif %}
 
-    {% if key in ['url', 'details_link'] %}
+    {% if key in ['url', 'document_link'] %}
     {{- (value, "url_wrapper") -}}
     {% endif %}
+
+    <span class="url_o{{loop.index}}"><span class="url_i{{loop.index}}">{{- part -}}</span></span>
     <tr>
         <td><b>{{ key|upper }}</b>: {{ value }}</td>
     </tr>
