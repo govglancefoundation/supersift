@@ -3,7 +3,7 @@
 {% if key in ['engine', 'engines', 'template', 'score', 'category', 'positions', 'pretty_url', 'parsed_url'] %}
     {% continue %}
 {% endif %}
-<article class="result {% if result['template'] %}result-{{ result.template|replace('.html', '') }}{% else %}result-default{% endif %} {% if result['category'] %}category-{{ result['category'] }}{% endif %}{% for e in result.engines %} {{ e }}{% endfor %}">
+<article class="result">
 {{- result_open_link(result.url, "url_wrapper") -}}
 <tr>
     <td><b>{{ key|upper }}</b>: {{ value }}</td>
