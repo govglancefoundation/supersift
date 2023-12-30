@@ -4,7 +4,9 @@
     {% continue %}
 {% endif %}
 <article class="result">
-{{- result_open_link(result.url, "url_wrapper") -}}
+{% if key in ['url', 'details_link'] %}
+{{- (value, "url_wrapper") -}}
+{% endif %}
 <tr>
     <td><b>{{ key|upper }}</b>: {{ value }}</td>
 </tr>
