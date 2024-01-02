@@ -7,13 +7,14 @@
 
     <span class="url_o1"><span class="url_i1">{{ url }}</span></span>
     {% if key == 'title' %}
-        <a href="{{ result['url'] }}">
-        <span class="highlight">{{ result[key] }}</span>
+    <h3>
+        <a href="{% results['url'] %}">
+        <span class="highlight">{{ value }}</span>
         </a>
     </h3>
     {% endif %}
     {% if key == 'description' %}
-    <p class="content">{{ result[key] }}</p>
+    <p class="content">{{ value }}</p>
     {% endif %}
 
 
