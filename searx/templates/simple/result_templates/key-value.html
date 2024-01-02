@@ -4,8 +4,9 @@
 {% if key in ['engine', 'engines', 'template', 'score', 'category', 'positions', 'pretty_url', 'parsed_url'] %}
     {% continue %}
 {% endif %}
-
-    <span class="url_o1"><span class="url_i1">{{ url }}</span></span>
+    <a href="{{ result['url'] }}">
+    <span class="url_o1"><span class="url_i1">{{ result['url'] }}</span></span>
+    </a>
     {% if key == 'title' %}
     <h3>
         <a href="{{ result['url'] }}">
