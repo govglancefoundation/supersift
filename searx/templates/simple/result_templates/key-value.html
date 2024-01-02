@@ -1,18 +1,23 @@
 
  <article class="result">
-{% for key in result %}
+{% for key, value in result.items() %}
 {% if key in ['engine', 'engines', 'template', 'score', 'category', 'positions', 'pretty_url', 'parsed_url'] %}
     {% continue %}
 {% endif %}
 
-    <span class="url_o1"><span class="url_i1">{{ key.url }}</span></span>
+    <span class="url_o1"><span class="url_i1">{{ url }}</span></span>
     {% if key == 'title' %}
     <h3>
-        <a href="{% key.url %}">
-        <span class="highlight">{{ key.title }}</span>
+        {% if key == 'url' %}
+
+        <a href="{% value %}">
+        {% endif %}
+        <span class="highlight">{{ value }}</span>
         </a>
     </h3>
-    <p class="content">{{ key.description }}</p>
+    {% endif %}
+    {% if key == 'description' %}
+    <p class="content">{{ value }}</p>
     {% endif %}
 
 
