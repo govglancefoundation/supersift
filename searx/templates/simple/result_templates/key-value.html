@@ -5,9 +5,12 @@
     {% continue %}
 {% endif %}
 
-    {% if key in ['url', 'document_link'] %}
+    {% if key in ['link','document_link'] %}
     {% with url= value %}
 
+    {% endwith %}
+    {% else}
+    {% with url= result.url %}
     {% endwith %}
     {% endif %}
     <span class="url_o1"><span class="url_i1">{{ url }}</span></span>
