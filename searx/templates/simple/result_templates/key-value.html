@@ -14,14 +14,16 @@
         <span class="highlight">{{ value }}</span>
         </a>
     </h3>
+    <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
     {% endif %}
     {% if key == 'description' %}
     <p class="content">{{ value }}</p>
     {% endif %}
 
- <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
+
 
 {% endfor %}
+
 </article>
 
 
