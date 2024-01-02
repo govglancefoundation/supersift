@@ -76,7 +76,12 @@ def _fetch_results(cur):
     titles = []
 
     try:
-        titles = [column_desc.name for column_desc in cur.description]
+        # titles = [column_desc.name for column_desc in cur.description]
+        for column_desc in cur.description:
+            if column_desc.name in ['document_link', 'link']:
+                titles.append('url')
+            else:
+                titles.append(column_desc.name)
 
         for res in cur:
             result = dict(zip(titles, map(str, res)))
