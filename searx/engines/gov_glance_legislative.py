@@ -76,7 +76,7 @@ def _fetch_results(cur):
     titles = []
 
     try:
-        # titles = [column_desc.name for column_desc in cur.description]
+        # for column_desc in cur.description:
         for column_desc in cur.description:
             if column_desc.name in ['document_link', 'link', 'download_link']:
                 titles.append('url')
