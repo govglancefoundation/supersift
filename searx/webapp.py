@@ -323,7 +323,7 @@ def image_proxify(url: str):
 
     return '{0}?{1}'.format(url_for('image_proxy'), urlencode(dict(url=url.encode(), h=h)))
 
-def get_domain_name(url: str):
+def get_domain_name(url):
     parsed_url = urlparse(url)
     return parsed_url.netloc.split('.')[-2]
 
