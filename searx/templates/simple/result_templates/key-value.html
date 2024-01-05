@@ -10,12 +10,11 @@
     <span class="url_o1"><span class="url_i1">{{ result['url'] }}</span></span>
     </a>
     <h3>
-        <a href="{{ result['url'] }}">{{ get_domain_name(result['url']) }}</a>
+        <a href="{{ result['url'] }}">{{ result['url'] }}</a>
     </h3>
     <p class="content">{{ value }}</p>
-    <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
-    {% endif %}
 
+    <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
     {% endif %}
 
 
