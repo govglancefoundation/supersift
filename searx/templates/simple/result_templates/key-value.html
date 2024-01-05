@@ -10,10 +10,11 @@
     <span class="url_o1"><span class="url_i1">{{ result['url'] }}</span></span>
     </a>
     <h3>
-        <a href="{{ result['url'] }}">{{ (result['url']) }}</a>
+        <a href="{{ result['url'] }}">{{ value }}</a>
     </h3>
-    <p class="content">{{ value }}</p>
-
+    {% if key == 'description' %}
+        <p class="content">{{ result['description'] }}</p>
+    {% endif %}
     <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
     {% endif %}
 
