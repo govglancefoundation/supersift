@@ -12,7 +12,6 @@
     <h3>
         <a href="{{ result['url'] }}">{{ get_domain_name(result['url']) }}</a>
     </h3>
-    {% if key == 'description' %}
     <p class="content">{{ value }}</p>
     <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
     {% endif %}
