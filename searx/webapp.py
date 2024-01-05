@@ -22,7 +22,7 @@ from typing import List, Dict, Iterable
 
 import urllib
 import urllib.parse
-from urllib.parse import urlencode, unquote
+from urllib.parse import urlencode, unquote, urlparse
 
 import httpx
 
@@ -322,6 +322,10 @@ def image_proxify(url: str):
     h = new_hmac(settings['server']['secret_key'], url.encode())
 
     return '{0}?{1}'.format(url_for('image_proxy'), urlencode(dict(url=url.encode(), h=h)))
+
+def get_domain_name(url: str):
+    parsed_url = urlparse(url)
+    return parsed_url.netloc.split('.')[-2]
 
 
 def get_translations():
