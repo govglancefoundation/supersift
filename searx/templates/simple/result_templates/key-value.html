@@ -1,27 +1,11 @@
-
- <article class="result">
-{% for key, value in result.items() %}
-{% if key in ['engine', 'engines', 'template', 'score', 'category', 'positions', 'pretty_url', 'parsed_url'] %}
-    {% continue %}
-{% endif %}
-
-    {% if key == 'title' %}
-    <a href="{{ result['url'] }}">
-    <span class="url_o1"><span class="url_i1">{{ result['url'] }}</span></span>
-    </a>
-    <h3>
-        <a href="{{ result['url'] }}">{{ result['title'] }}</a>
-    </h3>
-    {% if key == 'description' %}
-        <p class="content">{{ result['description'] }}</p>
+<table>
+    {% for key, value in result.items() %}
+    {% if key in ['engine', 'engines', 'template', 'score', 'category', 'positions', 'pretty_url', 'parsed_url'] %}
+        {% continue %}
     {% endif %}
-    <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
-    {% endif %}
-
-
-
-{% endfor %}
-
-</article>
-
-
+    <tr>
+        <td><b>{{ key|upper }}</b>: {{ value }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
