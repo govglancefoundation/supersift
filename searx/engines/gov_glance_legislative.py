@@ -82,7 +82,7 @@ def _fetch_results(cur):
                 titles.append('url')
             if column_desc.name in ['pubdate', 'pub_date', 'date', 'last_modified']:
                 titles.append('date')
-            if column_desc.name in ['title_v2', 'title']:
+            if column_desc.name in ['title_v2']:
                 titles.append('title')
             else:
                 titles.append(column_desc.name)
