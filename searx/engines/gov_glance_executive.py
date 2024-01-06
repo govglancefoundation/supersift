@@ -77,7 +77,7 @@ def _fetch_results(cur):
 
     try:
         for column_desc in cur.description:
-            if column_desc.name in ['document_link', 'link', 'download_link']:
+            if column_desc.name in ['document_link', 'link', 'download_link', 'details_link']:
                 titles.append('url')
             if column_desc.name in ['pubdate', 'pub_date', 'date', 'last_modified']:
                 titles.append('date')
