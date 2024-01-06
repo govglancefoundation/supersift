@@ -84,7 +84,7 @@ def _fetch_results(cur):
             if column_desc.name in ['title_v2']:
                 titles.append('title')
             if column_desc.name in ['description']:
-                titles.append('description')
+                titles.append('content')
             else:
                 pass
 
