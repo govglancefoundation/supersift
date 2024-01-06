@@ -84,8 +84,10 @@ def _fetch_results(cur):
                 titles.append('date')
             if column_desc.name in ['title_v2']:
                 titles.append('title')
+            if column_desc.append('description'):
+                titles.append('description')
             else:
-                titles.append(column_desc.name)
+                pass
 
         for res in cur:
             result = dict(zip(titles, map(str, res)))
