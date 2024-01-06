@@ -77,16 +77,18 @@ def _fetch_results(cur):
 
     try:
         for column_desc in cur.description:
-            try:
+            if column_desc.name in ['document_link', 'link', 'download_link']:
+                titles.append('url')
+            if column_desc.name in ['pubdate', 'pub_date', 'date', 'last_modified']:
+                titles.append('date')
+            else:
                 titles.append(column_desc.name)
-            except:
-                titles.append('')
-        # titles = [column_desc.title for column_desc in cur.description]
+            # titles = [column_desc.title for column_desc in cur.description]
 
-        for res in cur:
-            result = dict(zip(titles, map(str, res)))
-            result['template'] = result_template
-            results.append(result)
+            for res in cur:
+                result = dict(zip(titles, map(str, res)))
+                result['template'] = result_template
+                results.append(result)
 
     # no results to fetch
     except psycopg2.ProgrammingError:
