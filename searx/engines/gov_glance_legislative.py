@@ -84,7 +84,7 @@ def _fetch_results(cur):
                 titles.append('date')
             if column_desc.name in ['title_v2']:
                 titles.append('title')
-            if column_desc.append('description'):
+            if column_desc.name in ['description']:
                 titles.append('description')
             else:
                 pass
