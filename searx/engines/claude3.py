@@ -30,7 +30,7 @@ client = claude3.Anthropic(
     api_key= api_key
 )
 # do search-request
-def request(query):
+def request(query, params):
     content_block = client.messages.create(
         model="claude-3-opus-20240229",
         max_tokens=1000,
