@@ -16,7 +16,7 @@ about = {
     # "wikidata_id": 'Q866',
     "official_api_documentation": 'https://docs.anthropic.com/claude/reference/getting-started-with-the-api',
     "use_official_api": True,
-    "require_api_key": False,
+    "require_api_key": True,
     "results": 'JSON',
 }
 
