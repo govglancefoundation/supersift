@@ -7,7 +7,7 @@ from json import loads
 from dateutil import parser
 from urllib.parse import urlencode
 from searx.exceptions import SearxEngineAPIException
-import anthropic
+import searx.engines.claude3 as claude3
 import json
 # about
 about = {
@@ -25,13 +25,13 @@ categories = ['ai', 'general']
 paging = False
 api_key = None
 
-client = anthropic.Anthropic(
+client = claude3.Anthropic(
     # defaults to os.environ.get("ANTHROPIC_API_KEY")
     api_key= api_key
 )
 # do search-request
-def request(query, params):
-    create = create(
+def request(query):
+    content_block = client.messages.create(
         model="claude-3-opus-20240229",
         max_tokens=1000,
         temperature=0,
@@ -50,12 +50,12 @@ def request(query, params):
             ]
         )
 
-    return create
+    return content_block
 
 # get response from search-request
 def response(resp):
 
-    content_block = client.messages.resp
+    content_block = resp
 
     text_content = content_block[0].text
 
