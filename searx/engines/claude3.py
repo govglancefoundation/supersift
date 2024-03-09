@@ -7,8 +7,9 @@ from json import loads
 from dateutil import parser
 from urllib.parse import urlencode
 from searx.exceptions import SearxEngineAPIException
-import searx.engines.claude3 as claude3
+import anthropic
 import json
+
 # about
 about = {
     "website": 'https://www.anthropic.com',
@@ -25,7 +26,7 @@ categories = ['ai', 'general']
 paging = False
 api_key = None
 
-client = claude3.Anthropic(
+client = anthropic.Anthropic(
     # defaults to os.environ.get("ANTHROPIC_API_KEY")
     api_key= api_key
 )
