@@ -19,7 +19,7 @@ about = {
 }
 
 # engine dependent config
-categories = ['videos', 'music']
+categories = ['general'] #,'videos', 'music']
 paging = False
 api_key = None
 
