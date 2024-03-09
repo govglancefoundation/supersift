@@ -61,9 +61,6 @@ def response(resp):
 
     results = []
 
-    # search_results = loads(resp.text)
-    if 'error' in search_results and 'message' in search_results['error']:
-        raise SearxEngineAPIException(search_results['error']['message'])
 
     # return empty array if there are no results
     if 'items' not in search_results:
