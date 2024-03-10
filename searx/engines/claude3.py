@@ -23,12 +23,16 @@ categories = ['general']
 paging = False
 api_key = None
 
-client = anthropic.Anthropic(
-    # defaults to os.environ.get("ANTHROPIC_API_KEY")
-    api_key= api_key
-)
+# client = anthropic.Anthropic(
+#     # defaults to os.environ.get("ANTHROPIC_API_KEY")
+#     api_key= api_key
+# )
 # do search-request
 def request(query, params):
+    client = anthropic.Anthropic(
+    # defaults to os.environ.get("ANTHROPIC_API_KEY")
+    api_key= api_key
+    )
     content_block = client.messages.create(
         model="claude-3-opus-20240229",
         max_tokens=1000,
