@@ -19,7 +19,7 @@ about = {
 
 
 # engine dependent config
-categories = ['ai', 'general']
+categories = ['general']
 paging = False
 api_key = None
 
