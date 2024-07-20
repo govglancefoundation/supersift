@@ -75,7 +75,7 @@ def _download_and_check_if_image(image_url: str) -> bool:
             r, stream = network.stream(
                 'GET',
                 image_url,
-                timeout=10.0,
+                timeout=20.0,
                 allow_redirects=True,
                 headers={
                     'User-Agent': gen_useragent(),

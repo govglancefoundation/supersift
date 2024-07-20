@@ -150,7 +150,7 @@ def get_website_description(url, lang1, lang2=None):
             lang_list.append(lang2)
         headers['Accept-Language'] = f'{",".join(lang_list)};q=0.8'
     try:
-        response = searx.network.get(url, headers=headers, timeout=10)
+        response = searx.network.get(url, headers=headers, timeout=20)
         response.raise_for_status()
     except Exception:  # pylint: disable=broad-except
         return (None, None)

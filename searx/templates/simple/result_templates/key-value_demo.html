@@ -5,20 +5,23 @@
     {% continue %}
 {% endif %}
 
-    <span class="url_o1"><span class="url_i1">{{ url }}</span></span>
     {% if key == 'title' %}
+    <a href="{{ result['url'] }}">
+    <span class="url_o1"><span class="url_i1">{{ result['url'] }}</span></span>
+    </a>
     <h3>
-        <a href="{% results['url'] %}">
-        <span class="highlight">{{ value }}</span>
-        </a>
+        <a href="{{ result['url'] }}">{{ result['title'] }}</a>
     </h3>
-    {% endif %}
     {% if key == 'description' %}
-    <p class="content">{{ value }}</p>
+        <p class="content">{{ result['description'] }}</p>
     {% endif %}
+    <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
+    {% endif %}
+
 
 
 {% endfor %}
+
 </article>
- <div class="engines">{% for engine in result.engines %}<span>{{ engine }}</span>{% endfor %}</div>{{- '' -}}
+
 

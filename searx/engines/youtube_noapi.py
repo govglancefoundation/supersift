@@ -18,7 +18,7 @@ about = {
 }
 
 # engine dependent config
-categories = ['videos', 'music']
+categories = ['general'] #['videos', 'music',
 paging = True
 language_support = False
 time_range_support = True

@@ -81,8 +81,12 @@ def _fetch_results(cur):
                 titles.append('url')
             if column_desc.name in ['pubdate', 'pub_date', 'date', 'last_modified']:
                 titles.append('date')
+            if column_desc.name in ['title_v2']:
+                titles.append('title')
+            if column_desc.name in ['description']:
+                titles.append('description')
             else:
-                titles.append(column_desc.name)
+                pass
         for res in cur:
             result = dict(zip(titles, map(str, res)))
             result['template'] = result_template

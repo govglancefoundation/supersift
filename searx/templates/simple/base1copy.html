@@ -49,9 +49,9 @@
      <h2 class="title">Super Sift: customizable, private, non-profit search</h2>
       <div class="spacer"></div>
       {%- from 'simple/icons.html' import icon_big -%}
-	<a href="https://testflight.apple.com/join/opyxawEM" class="link_on_top_donate">{{ icon_big('people-outline') }}<span>{{ _('iOS Beta') }}</span></a>
+	<a href="https://testflight.apple.com/join/opyxawEM" class="link_on_top_donate">{{ icon_big('phone-emoji') }}<span>{{ _('iOS Beta') }}</span></a>
       {%- block linkto_about -%}
-        <a href="{{ url_for('info', pagename='about') }}" class="link_on_top_about">{{ icon_big('information-circle-outline') }}<span>{{ _('About') }}</span></a>
+        <a href="{{ url_for('info', pagename='about') }}" class="link_on_top_about">{{ icon_big('folder-emoji') }}<span>{{ _('About') }}</span></a>
       {%- endblock -%}
       {%- block linkto_donate -%}
         {%- if donation_url -%}
@@ -59,7 +59,7 @@
         {%- endif -%}
       {%- endblock -%}
       {%- block linkto_preferences -%}
-        <a href="{{ url_for('preferences') }}" class="link_on_top_preferences">{{ icon_big('menu-outline') }}<span>{{ _('Preferences') }}</span></a>
+        <a href="{{ url_for('preferences') }}" class="link_on_top_preferences">{{ icon_big('tools-emoji') }}<span>{{ _('Preferences') }}</span></a>
       {%- endblock -%}
     </nav>
     {% include 'simple/search_copy.html' %}
