@@ -3644,6 +3644,23 @@ article[data-vim-selected].category-videos {
     grid-template-areas: "corrections sidebar" "answers sidebar" "urls sidebar" "pagination sidebar"
 }
 
+/* #results {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-bottom: 0;
+    margin-right: 10rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content min-content min-content min-content min-content min-content min-content;
+    gap: 1rem 0;
+    grid-template-areas: 
+        "sidebar"
+        "corrections" 
+        "answers" 
+        "urls" 
+        "pagination";
+} */
+
 #results #sidebar :first-child,
 #results #urls :first-child {
     margin-top: 0
@@ -3763,6 +3780,19 @@ summary.title {
 
 #infoboxes form {
     min-width: 210px
+}
+
+#answerbar {
+    word-wrap: break-word;
+    color: var(--color-sidebar-font);
+    background: var(--color-glass-background); /* White color with 20% opacity */
+    border-radius: 20px; /* Rounded borders */
+    /*box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    backdrop-filter: blur(50px); /* Blurred background */
+    -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
+    padding: 20px; /* Space inside the div */
+    border: 0px solid rgba(255, 255, 255, 0.3);
+    border-left: .2rem solid transparent
 }
 
 #sidebar {

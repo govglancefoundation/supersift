@@ -18,7 +18,9 @@ body {
 main {
     /*display: block;*/
     overscroll-behavior: none;
-    background: linear-gradient( #039573, #04654F);
+    /* background: linear-gradient( #039573, #04654F); */
+    background: linear-gradient( #d4d4d4, #ebebeb);
+
 }
 
 .title {
@@ -198,7 +200,7 @@ template {
 
 :root {
     --color-glass-background: rgba(255, 255, 255, 0.5);
-    --color-base-title: rgba(255, 255, 255, 0.7); 
+    --color-base-title: rgba(0, 0, 0, 0.7); 
     --color-base-font: #212121;
     --color-base-font-rgb: 68, 68, 68;
     --color-base-background: #039573;
@@ -1627,6 +1629,14 @@ th:hover .engine-tooltip {
         padding: 1rem
     }
 }
+
+#results-page-margin {
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+
+}
+
 #results {
     background-color: transparent;
     border-radius: '30px';
@@ -3832,6 +3842,10 @@ summary.title {
     min-width: 210px
 }
 
+#answerbar {
+    margin-right: 50px;
+} 
+
 #sidebar {
     grid-area: sidebar;
     word-wrap: break-word;
@@ -4173,6 +4187,26 @@ summary.title {
     margin-right: 4rem
 }
 
+.infoboxes  {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem; /* Optional: adds space between the divs */
+}
+
+.infobox {
+    word-wrap: break-word;
+    color: var(--color-sidebar-font);
+    background: var(--color-glass-background); /* White color with 20% opacity */
+    border-radius: 20px; /* Rounded borders */
+    /* box-shadow: 3px 3px 3px 10px rgba(0, 0, 0, 0.3); */
+    backdrop-filter: blur(50px); /* Blurred background */
+    -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
+    padding: 20px; /* Space inside the div */
+    border: 0px solid rgba(255, 255, 255, 0.3);
+    border-left: .2rem solid transparent;
+    margin-top: 20px;
+}
+
 @media screen and (max-width:50em) {
     #links_on_top span {
         display: none
@@ -4184,8 +4218,8 @@ summary.title {
     }
 
     #infoboxes {
-        position: inherit;
-        max-width: inherit
+        /* position: inherit; */
+        /* max-width: inherit; */
     }
 
     #infoboxes .infobox {

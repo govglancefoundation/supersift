@@ -63,7 +63,7 @@ def dbpedia(query, _lang):
 
 def duckduckgo(query, sxng_locale):
     """Autocomplete from DuckDuckGo. Supports DuckDuckGo's languages"""
-
+    print(engines)
     traits = engines['duckduckgo'].traits
     args = {
         'q': query,

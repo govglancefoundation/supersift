@@ -57,29 +57,14 @@ def response(resp):
     for source in sources_ai:
         sources_results.append({'title':source,'url': source})
     
+    title = "Anthropic AI: claude-3-sonnet"
     results.append(
             {
-                'infobox': 'claude-3-sonnet',
+                'infobox': f'{title}',
                 'id': '',
                 'content': response_content,
                 'urls': sources_results
             }
         )
         
-    return results
-
-    title = "Anthropic AI: claude-3-sonnet (%s)" % infobox_title
-
-    # append infobox
-    results.append(
-        {
-            'infobox': infobox_title,
-            # 'attributes': result_chunks,
-            'urls': [{'title': 'Antropic|claude-3-sonnet', 'url': resp.request.headers['Referer']}],
-        }
-    )
-
-    # append link to site
-    results.append({'url': resp.request.headers['Referer'], 'title': title, 'content': result_content})
-
     return results
