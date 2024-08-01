@@ -17,7 +17,14 @@
   {% set only_template = '' %}
 {% endif %}
 
-<div id="results" class="{{ only_template }}">
+
+
+<!-- We are removing #results with results-page-margin to create custom margin
+      WE could not figure out how to edit the other one. >_< :p
+-->
+    
+<div id="results-page-margin" class="{{ only_template }}">
+    
     {% if answers -%}
     <div id="answers" role="complementary" aria-labelledby="answers-title"><h4 class="title" id="answers-title">{{ _('Answers') }} : </h4>
         {%- for answer in answers.values() -%}
@@ -32,14 +39,15 @@
     </div>
     {%- endif %}
 
-    <div id="sidebar">
+    <div id="answerbar">
+
 
         {%- if number_of_results != '0' -%}
         <p id="result_count"><small>{{ _('Number of results') }}: {{ number_of_results }}</small></p>
         {%- endif -%}
 
         {%- if infoboxes -%}
-          <div id="infoboxes">
+          <div id = "infoboxes" class="infoboxes">
             <details open class="sidebar-collapsable">
               <summary class="title">{{ _('Info') }}</summary>
               {%- for infobox in infoboxes -%}
@@ -49,25 +57,14 @@
           </div>
         {%- endif -%}
 
-        {%- if suggestions -%}
-          {%- include 'simple/elements/suggestions.html' -%}
-        {%- endif -%}
-
-        {%- if method == 'POST' -%}
-          {%- include 'simple/elements/search_url.html' -%}
-        {%- endif -%}
-
         {%- if unresponsive_engines -%}
           {%- include 'simple/elements/engines_msg.html' -%}
-	{%- endif -%}
-
-        {%- if search_formats -%}
-          {%- include 'simple/elements/apis.html' -%}
         {%- endif -%}
 
         <div id="sidebar-end-collapsable"></div>
     </div>
-
+    
+    <div>
     {% if corrections %}
     <div id="corrections" role="complementary" aria-labelledby="corrections-title">
       <h4 id="corrections-title">{{ _('Try searching for:') }}</h4>
@@ -171,5 +168,6 @@
         </div>
     </nav>
     {% endif %}
+    </div>
 </div>
 {% endblock %}

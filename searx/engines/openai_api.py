@@ -7,15 +7,15 @@ from json import loads, dumps
 
 # about
 about = {
-    "website": 'https://www.wolframalpha.com',
+    "website": 'https://www.openai.com',
     "wikidata_id": 'Q207006',
-    "official_api_documentation": 'https://products.wolframalpha.com/api/',
+    "official_api_documentation": 'https://platform.openai.com/docs/overview',
     "use_official_api": True,
     "require_api_key": False,
     "results": 'JSON',
 }
 
-categories = ['general']
+categories = ['general', 'ai']
 # search-url
 # search_url = 'https://api.wolframalpha.com/v2/query?appid={api_key}&{query}'
 search_url = 'https://api.openai.com/v1/chat/completions'
@@ -56,29 +56,15 @@ def response(resp):
     for source in sources_ai:
         sources_results.append({'title':source,'url': source})
     
+    title = "Open AI: gpt-4o-mini"
+
     results.append(
             {
-                'infobox': 'GPT-4o-mini',
+                'infobox': f'{title}',
                 'id': '',
                 'content': response_content,
                 'urls': sources_results
             }
         )
         
-    return results
-
-    title = "Open AI: gpt-4o-mini (%s)" % infobox_title
-
-    # append infobox
-    results.append(
-        {
-            'infobox': infobox_title,
-            # 'attributes': result_chunks,
-            'urls': [{'title': 'OpenAI|gpt-4o-mini', 'url': resp.request.headers['Referer']}],
-        }
-    )
-
-    # append link to site
-    results.append({'url': resp.request.headers['Referer'], 'title': title, 'content': result_content})
-
     return results
