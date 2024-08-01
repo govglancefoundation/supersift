@@ -36,10 +36,10 @@ def request(_query, params):
     params['data'] = dumps({
     "model": "gpt-4o-mini",
     "messages": [
-        {"role": "system", "content": "Respond with an answer and website links to relevant sources.  The response should be in the following JSON format {response: 'Example response', 'links': [https://example1.com, https://example2.com ]}'"},
+        {"role": "system", "content": '''Respond with an answer and website links to relevant sources. The response should be in the following JSON format {"response": "Example response", "links": ["https://example1.com", "https://example2.com"]}. Do not use newline syntax. Escape the the double qoutes if in the response value. Make sure the response value is in double qoutes. In the values use singles quotes Respond with 400 tokens or less.'''},
         {"role": "user", "content": f"{_query}"}
     ],
-    "max_tokens": 300
+    "max_tokens": 500
     })
     return params
 

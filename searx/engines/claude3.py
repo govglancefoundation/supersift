@@ -1,95 +1,85 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
+"""
+ Anthropic (Science)
+"""
 
-from json import loads
-from dateutil import parser
-from urllib.parse import urlencode
-from searx.exceptions import SearxEngineAPIException
-import anthropic
-import json
+from json import loads, dumps
 
 # about
 about = {
     "website": 'https://www.anthropic.com',
-    # "wikidata_id": 'Q866',
-    "official_api_documentation": 'https://docs.anthropic.com/claude/reference/getting-started-with-the-api',
+    "wikidata_id": '',
+    "official_api_documentation": 'https://docs.anthropic.com/en/api/getting-started',
     "use_official_api": True,
-    "require_api_key": True,
+    "require_api_key": False,
     "results": 'JSON',
 }
 
+categories = ['general', 'ai']
+# search-url
+search_url = "https://api.anthropic.com/v1/messages"
+api_key = ''  # defined in settings.yml
 
-# engine dependent config
-categories = ['general']
-paging = False
-api_key = None
 
-# client = anthropic.Anthropic(
-#     # defaults to os.environ.get("ANTHROPIC_API_KEY")
-#     api_key= api_key
-# )
 # do search-request
-def request(query, params):
-    client = anthropic.Anthropic(
-    # defaults to os.environ.get("ANTHROPIC_API_KEY")
-    api_key= api_key
-    )
-    content_block = client.messages.create(
-        model="claude-3-opus-20240229",
-        max_tokens=1000,
-        temperature=0,
-        system="Super Sift Claude Search is a search assistant that finds the best and most official sources.\n\nIt only responds in JSON format that must contain 1 short concise written response to the query along with 5 of the best sources that must contain a title and https link to the webpage.",
-        messages =
-            [
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": f"{query}"
-                        }
-                    ]
-                }
-            ]
-        )
+def request(_query, params):
+    params['url'] = search_url
+    # params['headers']['Referer'] = site_url.format(query=urlencode({'i': query}))
+    params['method'] = 'POST'
+    params['headers']['Content-type'] = "application/json"
+    params['headers']['X-API-Key'] = f"{api_key}"
+    params['headers']["Anthropic-Version"] = "2023-06-01"
 
-    return content_block
+    params['data'] = dumps({
+    "model": "claude-3-sonnet-20240229",
+    "max_tokens": 500,
+    "system": '''Respond with an answer and website links to relevant sources. The response should be in the following JSON format {"response": "Example response", "links": ["https://example1.com", "https://example2.com"]}. Do not use newline syntax. Escape the the double qoutes if in the response value. Make sure the response value is in double qoutes. In the values use singles quotes Respond with 400 tokens or less."''',
+    "messages" : [
+        {"role": "user",
+         "content": [
+             {"type": "text", 
+              "text": f"{_query}"}
+              ]
+            }
+        ]
+    })
+    return params
+
 
 # get response from search-request
 def response(resp):
-
-    content_block = resp
-
-    text_content = content_block[0].text
-
-    search_results = json.loads(text_content)
-
     results = []
-
-
-    # return empty array if there are no results
-    if 'items' not in search_results:
-        return []
-
-    if 'response' in search_results:
-        results.append(
+    json_result = loads(resp.text)
+    data_openai = loads(json_result['content'][0]['text'])
+    response_content = data_openai['response']
+    sources_ai = data_openai['links']
+    sources_results = []
+    for source in sources_ai:
+        sources_results.append({'title':source,'url': source})
+    
+    results.append(
             {
-                'url': None,
-                'title': search_results['response'],
-                'response': None,
-                'template': 'key-value.html'
+                'infobox': 'claude-3-sonnet',
+                'id': '',
+                'content': response_content,
+                'urls': sources_results
             }
         )
-    # parse results
+        
+    return results
 
-    for result in search_results['source']:
+    title = "Anthropic AI: claude-3-sonnet (%s)" % infobox_title
 
-        # append result
-        results.append(
-            {
-                'url': result['link'],
-                'title': result['title'],
-            }
-        )
+    # append infobox
+    results.append(
+        {
+            'infobox': infobox_title,
+            # 'attributes': result_chunks,
+            'urls': [{'title': 'Antropic|claude-3-sonnet', 'url': resp.request.headers['Referer']}],
+        }
+    )
 
-    # return results
+    # append link to site
+    results.append({'url': resp.request.headers['Referer'], 'title': title, 'content': result_content})
+
     return results
