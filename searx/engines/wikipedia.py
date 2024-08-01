@@ -190,11 +190,11 @@ def response(resp):
     if api_result.get('type') == 'standard':
         results.append(
             {
-                'infobox': title,
+                'infobox': 'Wikipedia',
                 'id': wikipedia_link,
                 'content': api_result.get('extract', ''),
                 'img_src': api_result.get('thumbnail', {}).get('source'),
-                'urls': [{'title': 'Wikipedia', 'url': wikipedia_link}],
+                'urls': [{'title': wikipedia_link, 'url': wikipedia_link}],
             }
         )
 
