@@ -23,7 +23,7 @@
       WE could not figure out how to edit the other one. >_< :p
 -->
     
-<div id="results-page-margin" class="{{ only_template }}">
+<div id="results-page-margin">
     
     {% if answers -%}
     <div id="answers" role="complementary" aria-labelledby="answers-title"><h4 class="title" id="answers-title">{{ _('Answers') }} : </h4>
@@ -39,7 +39,7 @@
     </div>
     {%- endif %}
 
-    <div id="answerbar">
+    <!-- <div id="answerbar" class="left-answer"> -->
 
 
         {%- if number_of_results != '0' -%}
@@ -47,24 +47,24 @@
         {%- endif -%}
 
         {%- if infoboxes -%}
-          <div id = "infoboxes" class="infoboxes">
-            <details open class="sidebar-collapsable">
-              <summary class="title">{{ _('Info') }}</summary>
+          <!-- <div id = "infoboxes" class="infoboxes"> -->
+            <!-- <details open class="sidebar-collapsable"> -->
+              <!-- <summary class="title">{{ _('Info') }}</summary> -->
               {%- for infobox in infoboxes -%}
                 {%- include 'simple/elements/infobox.html' -%}
               {%- endfor -%}
-            </details>
-          </div>
+            <!-- </details> -->
+          <!-- </div> -->
         {%- endif -%}
 
-        {%- if unresponsive_engines -%}
+        <!-- {%- if unresponsive_engines -%}
           {%- include 'simple/elements/engines_msg.html' -%}
-        {%- endif -%}
+        {%- endif -%} -->
 
-        <div id="sidebar-end-collapsable"></div>
-    </div>
+        <!-- <div id="sidebar-end-collapsable"></div> -->
+    <!-- </div> -->
     
-    <div>
+    <!-- <div> -->
     {% if corrections %}
     <div id="corrections" role="complementary" aria-labelledby="corrections-title">
       <h4 id="corrections-title">{{ _('Try searching for:') }}</h4>
@@ -87,7 +87,8 @@
     </div>
     {% endif %}
 
-    <div id="urls" role="main">
+    <!-- <div class = 'right-wrap'> -->
+    <!-- <div id="urls" role="main"> -->
     {% for result in results %}
         {% if result.open_group and not only_template %}<div class="template_group_{{ result['template']|replace('.html', '') }}">{% endif %}
         {% set index = loop.index %}
@@ -97,15 +98,20 @@
     {% if not results and not answers %}
         {% include 'simple/messages/no_results.html' %}
     {% endif %}
-    </div>
-    <div id="backToTop">
-      <a href="#" aria-label="{{ _('Back to top') }}">{{ icon_small('chevron-up-outline') }}</a>
-    </div>
+    <!-- </div> -->
+<!-- </div> -->
+</div>
+     <div>
+
     {% if paging %}
     <nav id="pagination" role="navigation">
+      
         {% if pageno > 1 %}
             <form method="{{ method or 'POST' }}" action="{{ url_for('search') }}" class="previous_page">
-                <div class="{% if rtl %}right{% else %}left{% endif %}">
+                  <div id="backToTop">
+      <a href="#" aria-label="{{ _('Back to top') }}">{{ icon_small('chevron-up-outline') }}</a>
+    </div>  
+              <div class="{% if rtl %}right{% else %}left{% endif %}">
                   <input type="hidden" name="q" value="{{ q|e }}" >
                   {% for category in selected_categories %}
                   <input type="hidden" name="category_{{ category }}" value="1" >
@@ -168,6 +174,7 @@
         </div>
     </nav>
     {% endif %}
-    </div>
-</div>
+  </div>
+
+    <!-- </div> -->
 {% endblock %}

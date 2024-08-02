@@ -203,8 +203,8 @@ template {
     --color-base-title: rgba(0, 0, 0, 0.7); 
     --color-base-font: #212121;
     --color-base-font-rgb: 68, 68, 68;
-    --color-base-background: #039573;
-    --color-base-background-mobile: #039573;
+    --color-base-background: linear-gradient( #d4d4d4, #ebebeb);
+    --color-base-background-mobile: #000000;
     --color-url-font: #039573;
     --color-url-visited-font: #039573;
     --color-header-background: #fdfbff;
@@ -301,7 +301,7 @@ template {
         --color-base-title: rgba(255, 255, 255, 0.7); 
         --color-base-font: #fdfbff;
         --color-base-font-rgb: 187, 187, 187;
-        --color-base-background: #039573;  
+        --color-base-background: #8a8a8a;  
         --color-base-background-mobile: #039573;  
         --color-url-font: #039573;
         --color-url-visited-font: #039573;
@@ -1631,16 +1631,18 @@ th:hover .engine-tooltip {
 }
 
 #results-page-margin {
-    margin: 50px;
+    width: 100vw;
+    /* height: 100vh; */
     display: flex;
-    flex-direction: row;
-
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    
 }
 
-#results {
+/*#results {
     background-color: transparent;
-    border-radius: '30px';
-}
+    border-radius: 30px;
+} */
 #main_results #results.image-detail-open.only_template_images {
     width: min(98%, 59.25rem) !important
 }
@@ -3267,8 +3269,8 @@ main {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     height: 100vh;
     margin: 0
 }
@@ -3365,7 +3367,7 @@ article[data-vim-selected].category-videos {
 }
 
 .result {
-    margin: .5rem 0;
+    margin: 20px;
     padding: 18px;
     background: var(--color-glass-background); /* rgba(255, 255, 255, 0.5); /* White color with 20% opacity */
     border-radius: 20px; /* Rounded borders */
@@ -3374,6 +3376,14 @@ article[data-vim-selected].category-videos {
     -webkit-backdrop-filter: blur(50px); /* For Safari browser compatibility */
     border: 0px solid rgba(255, 255, 255, 0.3);
     border-left: .2rem solid transparent;
+    /* width: 100px; */
+    /* height: 30%; */
+    flex: 1 1 100px;
+    /* display: block; */
+    /* flex: 1 0 21%; */
+    /* box-sizing: border-box; */
+    max-height: 38%;
+    max-width: 20%;
 }
 
 .result h3 {
@@ -3843,8 +3853,19 @@ summary.title {
 }
 
 #answerbar {
-    margin-right: 50px;
+    /* margin-right: 50px; */
+
 } 
+.left-answer, .right-wrap {
+
+    flex: 1 1 50%;
+    box-sizing: border-box;
+}
+
+.right-wrap {
+    flex: 1 1 100%;
+
+}
 
 #sidebar {
     grid-area: sidebar;
@@ -3910,6 +3931,15 @@ summary.title {
     clear: both
 }
 
+.url {
+    background-color: white;
+    padding: 10px;
+    border: 0px;
+    color: var(--color-result-link-font-highlight);
+    font-size: 16px;
+    border-radius: 10px;
+    margin: 10px;
+    }
 #sidebar .infobox .attributes,
 #sidebar .infobox .urls {
     clear: both
@@ -4188,9 +4218,10 @@ summary.title {
 }
 
 .infoboxes  {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    gap: 1rem; /* Optional: adds space between the divs */
+    gap: 1rem; Optional: adds space between the divs */
+
 }
 
 .infobox {
@@ -4204,7 +4235,11 @@ summary.title {
     padding: 20px; /* Space inside the div */
     border: 0px solid rgba(255, 255, 255, 0.3);
     border-left: .2rem solid transparent;
-    margin-top: 20px;
+    margin: 20px;
+    height: 38%;
+    /* width:  100px; */
+    /* height: 20%; */
+    flex: 1 1 100px;
 }
 
 @media screen and (max-width:50em) {
@@ -4228,7 +4263,8 @@ summary.title {
 
     #infoboxes .infobox img {
         float: left;
-        max-width: 10em;
+        /* max-width: 5em; */
+        width: 10px;
         margin-top: .5em;
         margin-right: .5em;
         margin-bottom: .5em;
@@ -4331,10 +4367,7 @@ summary.title {
         border-radius: 10px
     }
 
-    .result {
-        background: var(--color-glass-background);
-        margin: 1rem 0
-    }
+   
 
     .result-images {
         margin: 0;
