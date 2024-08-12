@@ -22,12 +22,10 @@ api_key = ''  # defined in settings.yml
 
 # do search-request
 def request(_query, params):
-    params['url'] = f"http://134.122.22.254/search/?q={_query}&limit=1&skip=0"
+    params['url'] = f"https://api.supersift.net/search/?q={_query}&limit=10&skip=0"
 
     # params['headers']['Referer'] = site_url.format(query=urlencode({'i': query}))
-    params['method'] = 'GET'
-    params['headers']['Content-type'] = "application/json"
-    params['headers']['X-API-Key'] = f"{api_key}"
+    params['headers'] = {'Authorization': 'Bearer ' + api_key}
 
     return params
 
@@ -38,14 +36,14 @@ def response(resp):
     json_result = loads(resp.text)
     
     title = "Supersift Engine"
-    results.append(
-            {
-                'title': f'{title}',
-                'id': '',
-                'content': response_content,
-                'urls': sources_results,
-                'template': 'default.html'
-            }
-        )
+    for result in json_result:
+        results.append(
+                {
+                    'title': result['title'],
+                    'content': result['content'],
+                    'url': result['url'],
+                    'template': 'default.html'
+                }
+            )
         
     return results
