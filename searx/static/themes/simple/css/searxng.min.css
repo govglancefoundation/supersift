@@ -4236,7 +4236,7 @@ summary.title {
     border: 0px solid rgba(255, 255, 255, 0.3);
     border-left: .2rem solid transparent;
     margin: 20px;
-    height: 38%;
+    /* height: 38%; */
     /* width:  100px; */
     /* height: 20%; */
     flex: 1 1 100px;
