@@ -5,6 +5,7 @@ html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     overscroll-behavior: none;
+    background: linear-gradient( #d4d4d4, #ebebeb);
 }
 
 body {
@@ -4240,6 +4241,12 @@ summary.title {
     /* width:  100px; */
     /* height: 20%; */
     flex: 1 1 100px;
+}
+
+@media (max-width: 768px) {
+    .infobox {
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width:50em) {

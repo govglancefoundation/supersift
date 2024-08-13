@@ -424,6 +424,7 @@ class Preferences:
                 settings['ui']['theme_args']['simple_style'],
                 locked=is_locked('simple_style'),
                 choices=['', 'auto', 'light', 'dark']
+                # choice=["lights"]
             ),
             'center_alignment': MapSetting(
                 settings['ui']['center_alignment'],
