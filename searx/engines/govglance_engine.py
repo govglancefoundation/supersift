@@ -15,7 +15,7 @@ about = {
     "results": 'JSON',
 }
 
-categories = ['general']
+categories = ['general', 'government']
 # search-url
 api_key = ''  # defined in settings.yml
 
