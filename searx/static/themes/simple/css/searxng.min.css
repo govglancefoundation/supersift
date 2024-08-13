@@ -11,6 +11,7 @@ html {
 body {
     margin: 0;
     overscroll-behavior: none;
+    /* background: linear-gradient( #d4d4d4, #ebebeb); */
    /* overflow-x: hidden;*/
    /* overflow-y: auto;*/
 
@@ -20,7 +21,7 @@ main {
     /*display: block;*/
     overscroll-behavior: none;
     /* background: linear-gradient( #039573, #04654F); */
-    background: linear-gradient( #d4d4d4, #ebebeb);
+    /* background: linear-gradient( #d4d4d4, #ebebeb); */
 
 }
 
